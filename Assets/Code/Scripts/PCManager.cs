@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PCManager : MonoBehaviour
 {
-    public GameObject socialMediaApp;
+    public TempFriend socialMediaApp;
     private bool isSocialMediaAppActive = false;
 
     public GameObject messagingApp;
@@ -20,13 +20,12 @@ public class PCManager : MonoBehaviour
     {
         if (isSocialMediaAppActive == false)
         {
-            socialMediaApp.SetActive(true);
+            socialMediaApp.gameObject.SetActive(true);
             isSocialMediaAppActive = true;
             return;
         }
-        socialMediaApp.SetActive(false);
+        socialMediaApp.gameObject.SetActive(false);
         isSocialMediaAppActive = false;
-
     }
 
     public void MessagingAppButton()
