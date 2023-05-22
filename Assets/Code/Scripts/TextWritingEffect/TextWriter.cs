@@ -46,7 +46,6 @@ public class TextWriter : MonoBehaviour
                 textWriterSingleList.RemoveAt(i);
                 i--;
             }
-
         }
     }
 

@@ -13,7 +13,13 @@ public class UI_Assistant : MonoBehaviour
     private TextMeshProUGUI messageText;
     private TextWriter.TextWriterSingle textWriterSingle;
 
-    private string[] messageArray;
+    private int indexMessageMainStreet = 0;
+
+    private int indexMessageAlleyWay = 0;
+
+
+
+    private string[] messageArrayMainStreet;
 
 
     private void Awake()
@@ -21,9 +27,8 @@ public class UI_Assistant : MonoBehaviour
         messageText = transform.Find("Message").Find("TextMessage").GetComponent<TextMeshProUGUI>();
     }
 
-    public void ActivateText()
+    public void ActivateTextAndProgressMainStreet()
     {
-        Debug.Log("Text activated.");
         if (textWriterSingle != null && textWriterSingle.IsActive())
         {
             // Currently active TextWriter
@@ -31,21 +36,36 @@ public class UI_Assistant : MonoBehaviour
         }
         else
         {
-            string message = AssignAndReturnMessageArray()[Random.Range(0, messageArray.Length)];
+            // We'll have increment approach rather than random here
+            string message = AssignAndReturnMessageArray()[Random.Range(0, messageArrayMainStreet.Length)];
             textWriterSingle = TextWriter.AddWriterWithSpeed_Static(messageText, message, messageLoadSpeed, true, true);
         }
     }
 
+    // public void ActivateTextAndProgressAlleyWayLeft()
+    // {
+    //     messageArrayAlleyWayLeft = new string[]{
+    //             "",
+
+    //     };
+
+    // }
+
+    // public void ActivateTextAndProgressAlleyWayRight()
+    // {
+    //     messageArrayAlleyWayRight = new string[]{
+    //             ""
+    //     };
+
+    // }
+
     private string[] AssignAndReturnMessageArray()
     {
-        messageArray = new string[] {
-                "This is the assistant speaking, hello and goodbye, see you next time!",
-                "Hey there! Howdy! I've missed you. Come here and give me a hug.",
-                "This is a really cool and useful effect that you can use in various projects",
-                "Let's learn some code and make awesome games, cool isn't it!",
-                "Manage your time wisely nice little young man.",
+        messageArrayMainStreet = new string[] {
+                "Hi there! Good to see you.",
+
             };
 
-        return messageArray;
+        return messageArrayMainStreet;
     }
 }
