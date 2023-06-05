@@ -19,6 +19,7 @@ public class TextWriter : MonoBehaviour
 
     public static TextWriterSingle AddWriterWithSpeed_Static(TextMeshProUGUI uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, bool removeWriterBeforeAdd, Action onComplete)
     {
+        Debug.Log(instance);
         if (removeWriterBeforeAdd)
         {
             instance.RemoveWriter(uiText);
@@ -95,6 +96,7 @@ public class TextWriter : MonoBehaviour
                 // Display next character
                 timer += timePerCharacter;
                 characterIndex++;
+                Debug.Log("text to write: " + textToWrite);
                 string text = textToWrite.Substring(0, characterIndex);
                 if (invisibleCharacters)
                 {

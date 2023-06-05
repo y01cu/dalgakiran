@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, ProcessInformation
 {
-    string name;
+    // string name;
 
     public void ProcessImage()
     {

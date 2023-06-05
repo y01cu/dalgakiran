@@ -1,4 +1,5 @@
 trackSelection = true
+refreshSearchWindowsInPlayMode = false
 fetchPreview = true
 defaultFlags = 0
 keepOpen = false
@@ -10,6 +11,12 @@ scopes = {
 	"last_search.DA949528" = "node"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
+	"last_search.310DEAF1" = "t:AudioSource"
+	"OpenInspectorPreview.310DEAF1" = "0"
+	"currentGroup.310DEAF1" = "scene"
+	"last_search.3BE40471" = "t:AudioSource"
+	"OpenInspectorPreview.3BE40471" = "0"
+	"currentGroup.3BE40471" = "all"
 }
 providers = {
 	adb = {
@@ -52,21 +59,45 @@ providers = {
 		priority = 50
 		defaultAction = null
 	}
+	profilermarkers = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
 }
 objectSelectors = {
 }
 recentSearches = [
-	"no"
-	"d"
+	"t:AudioSource"
+	""
+	"a"
+	"basic dem"
+	".anim"
+	"prefab:any Cyberpunk_Scene"
+	"prefab:any"
+	"prefga"
+	"i"
+	"missing:Any ref=<$object:none,GameObject$>"
+	"missing:Any"
+	"missing:Script"
+	"missing:Script salute"
+	"sa"
+	"t:animation "
 	"t"
+	"p: dir=\"Assets\" "
+	"OtherFolders"
+	"Ot"
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
 showSavedSearchPanel = false
+hideTabs = false
 expandedQueries = [
 ]
-queryBuilder = false
+queryBuilder = true
 ignoredProperties = "id;name;classname;imagecontentshash"
-helperWidgetCurrentArea = "all"
+helperWidgetCurrentArea = "h:"
 disabledIndexers = ""
+minIndexVariations = 2
+findProviderIndexHelper = true

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Living Room (Night) - Custom Home Environment
+* source:	https://sketchfab.com/3d-models/living-room-night-custom-home-environment-761f36d81cda49e781a5b9e3616d5d47
+* author:	sidequest (https://sketchfab.com/sidequest)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Living Room (Night) - Custom Home Environment" (https://sketchfab.com/3d-models/living-room-night-custom-home-environment-761f36d81cda49e781a5b9e3616d5d47) by sidequest (https://sketchfab.com/sidequest) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
