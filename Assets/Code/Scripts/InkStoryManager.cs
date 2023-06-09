@@ -1,6 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System;
+using UnityEngine.UI;
+using System.Collections;
 using Ink.Runtime;
 using TMPro;
 
@@ -12,6 +13,9 @@ public class InkStoryManager : MonoBehaviour
 
     // [SerializeField] private AudioClip tempAC;
     [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private AudioClip huhSound;
+
     // [SerializeField] private AudioClip buttonClickAudioClip;
 
     private TextWriter.TextWriterSingle textWriterSingle;
@@ -24,7 +28,6 @@ public class InkStoryManager : MonoBehaviour
             _audioController.Play(name);
         });    
     */
-
 
     // This is a super bare bones example of how to play and display a ink story in Unity.
     public static event Action<Story> OnCreateStory;
@@ -55,7 +58,10 @@ public class InkStoryManager : MonoBehaviour
         {
             // audioSource.PlayOneShot(tempAC);
             Debug.Log("Abdussamet için");
-            AreaAccessManager.IncrementAndCheckAreaAccess();
+
+            // AreaAccessManager.IncrementAndCheckAreaAccess();
+
+
             // tempButton.gameObject.SetActive(true);
             // tempButton.interactable = true;
             // tempButton.onClick.AddListener(delegate
@@ -63,7 +69,20 @@ public class InkStoryManager : MonoBehaviour
             //     tempButton.GetComponent<Animator>().SetTrigger("AnimateMe");
             // });
         });
+
+        story.BindExternalFunction("PlayHuhSound", () =>
+        {
+            StartCoroutine(WaitHuhSound());
+        });
     }
+
+    private IEnumerator WaitHuhSound()
+    {
+        yield return new WaitForSeconds(0.1f);
+        audioSource.PlayOneShot(huhSound);
+
+    }
+
 
     // This is the main function called every time the story changes. It does a few things:
     // Destroys all the old content and choices.

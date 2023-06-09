@@ -31,6 +31,7 @@ public class AreaAccessManager : MonoBehaviour
         accessibleAreaCount = 0;
     }
 
+
     public static void IncrementAccessibleAreaCount()
     {
         accessibleAreaCount++;
