@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NPCTurnManager : MonoBehaviour
 {
-    private static int npcNumber = 0;
+    private static int npcNumber = -1;
 
     public static int GetNPCNumber()
     {
@@ -36,7 +36,5 @@ public class NPCTurnManager : MonoBehaviour
     {
 
     }
-
-
 
 }

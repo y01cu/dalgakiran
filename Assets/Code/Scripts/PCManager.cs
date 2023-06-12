@@ -63,4 +63,12 @@ public class PCManager : MonoBehaviour
         videoEditingApp.SetActive(false);
         isVideoEditingAppActive = false;
     }
+
+    [SerializeField] private AudioClip appClickSFX;
+
+    public void PlayAppClickSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(appClickSFX);
+    }
+
 }
