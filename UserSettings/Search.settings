@@ -11,9 +11,9 @@ scopes = {
 	"last_search.DA949528" = "node"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
-	"last_search.310DEAF1" = "t:AudioSource"
+	"last_search.310DEAF1" = "missing:Script"
 	"OpenInspectorPreview.310DEAF1" = "0"
-	"currentGroup.310DEAF1" = "scene"
+	"currentGroup.310DEAF1" = "all"
 	"last_search.3BE40471" = "t:AudioSource"
 	"OpenInspectorPreview.3BE40471" = "0"
 	"currentGroup.3BE40471" = "all"
@@ -68,9 +68,10 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"missing:Script"
+	"a"
 	"t:AudioSource"
 	""
-	"a"
 	"basic dem"
 	".anim"
 	"prefab:any Cyberpunk_Scene"
@@ -79,7 +80,6 @@ recentSearches = [
 	"i"
 	"missing:Any ref=<$object:none,GameObject$>"
 	"missing:Any"
-	"missing:Script"
 	"missing:Script salute"
 	"sa"
 	"t:animation "

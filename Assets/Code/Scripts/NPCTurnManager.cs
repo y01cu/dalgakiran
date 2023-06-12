@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NPCTurnManager : MonoBehaviour
 {
+    // NPC number needs to increase as the game flows.
     private static int npcNumber = -1;
 
     public static int GetNPCNumber()

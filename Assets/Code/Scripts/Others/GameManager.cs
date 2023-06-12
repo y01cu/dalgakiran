@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static bool isPlayerGood;
+
     // There will be 2 different people player can control in the game.
     // Each of them will face 3 different NPCs.
     // Each NPC will have its own InkStory in its canvas.
@@ -17,10 +19,12 @@ public class GameManager : MonoBehaviour
 
     // - It should be clear that must not be any "end of the story, restart?" button in the whole game.
     // - Play should be able to travel using his/her travelling panel.
-    // - Player should be told to open the travelling panel.
-    // - Player should be told to go to the first NPC.
+    // - Player should be told to open the travelling panel and go to the place where first NPC is.
 
-
+    public static bool ReturnPlayerRole()
+    {
+        return isPlayerGood;
+    }
 
     public void LogCurrentNPCTurn()
     {
@@ -34,7 +38,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        CheckLogs();
+    }
+
+    private void CheckLogs()
+    {
+        bool isReadyToLogNPCTurn = Input.GetKeyDown(KeyCode.Y);
+        if (isReadyToLogNPCTurn)
         {
             LogCurrentNPCTurn();
         }
