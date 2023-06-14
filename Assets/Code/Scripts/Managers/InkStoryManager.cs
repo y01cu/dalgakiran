@@ -51,28 +51,17 @@ public class InkStoryManager : MonoBehaviour
         RefreshView();
     }
 
-
     private void InkBindExternalFunctions()
     {
         story.BindExternalFunction("ActivateTempButton", (string name) =>
         {
-            // audioSource.PlayOneShot(tempAC);
-            Debug.Log("Abdussamet için");
 
-            // AreaAccessManager.IncrementAndCheckAreaAccess();
-
-            // tempButton.gameObject.SetActive(true);
-            // tempButton.interactable = true;
-            // tempButton.onClick.AddListener(delegate
-            // {
-            //     tempButton.GetComponent<Animator>().SetTrigger("AnimateMe");
-            // });
         });
 
         story.BindExternalFunction("OpenTeleportPanel", () =>
         {
-            CanvasManager.Instance.OpenTeleportPanel();
-            GetComponentInParent<Canvas>().gameObject.SetActive(false);
+            // CanvasManager.Instance.OpenTeleportPanel();
+            // GetComponentInParent<Canvas>().gameObject.SetActive(false);
             // teleportPanel.gameObject.SetActive(true);
         });
 
@@ -80,6 +69,56 @@ public class InkStoryManager : MonoBehaviour
         {
             StartCoroutine(WaitHuhSound());
         });
+
+        story.BindExternalFunction("ActivateNextApp", () =>
+        {
+            // Activate next app and close canvas
+            TabletManager.IncrementAvailableAppsAction();
+
+            // Open it again after certain time
+            StartCoroutine(OpenCanvasAgainAndContinueCoroutine(5));
+
+            SetAlpha(GetComponent<Image>(), 0f);
+            DeactivateChildren();
+
+        });
+    }
+
+    private void DeactivateChildren()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    private void ActivateChildren()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
+    private void SetAlpha(Image img, float alphaValue)
+    {
+        Color originalColor = img.color;
+        img.color = new Color(originalColor.r, originalColor.g, originalColor.b, alphaValue);
+    }
+
+    [SerializeField] private Canvas parentCanvas;
+
+    private void CloseCanvas()
+    {
+        parentCanvas.gameObject.SetActive(false);
+    }
+
+    private IEnumerator OpenCanvasAgainAndContinueCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SetAlpha(GetComponent<Image>(), 1);
+        ActivateChildren();
+        // Let's try it without refreshing the view
     }
 
     private IEnumerator WaitHuhSound()

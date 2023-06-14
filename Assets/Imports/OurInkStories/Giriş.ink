@@ -1,4 +1,4 @@
-EXTERNAL OpenTeleportPanel()
+EXTERNAL ActivateNextApp()
 
 - Hoşgeldin DalgaKıran'a, burası dezenformasyonun karmaşık dünyasına bir yolculuk. Burada yaptıklarımız, insanların düşüncelerini, inançlarını ve hatta yaşamlarını derinden etkileyebilir. Hazır mısın bu yolculuğa çıkmaya?
 
@@ -12,5 +12,7 @@ EXTERNAL OpenTeleportPanel()
     * [Hadi bakalım]
         -- İlk olarak tabletindeki mesajlaşma uygulamasında bak
         ** [Tamam]
-        ~OpenTeleportPanel()
-    
+        ~ActivateNextApp()
+            --- Ne gördün
+            *** [Hiiç]
+        

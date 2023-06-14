@@ -11,7 +11,7 @@ scopes = {
 	"last_search.DA949528" = "node"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
-	"last_search.310DEAF1" = "h: t:InkStoryManager"
+	"last_search.310DEAF1" = "missing:Script"
 	"OpenInspectorPreview.310DEAF1" = "0"
 	"currentGroup.310DEAF1" = "all"
 	"last_search.3BE40471" = "t:AudioSource"
@@ -68,14 +68,14 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"missing:Script"
+	""
 	"h: t:"
 	"h: t:Animator"
-	""
 	"t:CanvasScaler"
 	"t:Canvas"
 	"t:CanvasGroup"
 	"C"
-	"missing:Script"
 	"a"
 	"t:AudioSource"
 	"basic dem"
@@ -87,7 +87,6 @@ recentSearches = [
 	"missing:Any ref=<$object:none,GameObject$>"
 	"missing:Any"
 	"missing:Script salute"
-	"sa"
 ]
 searchItemFavorites = [
 ]
@@ -96,7 +95,7 @@ showSavedSearchPanel = false
 hideTabs = false
 expandedQueries = [
 ]
-queryBuilder = false
+queryBuilder = true
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "h:"
 disabledIndexers = ""

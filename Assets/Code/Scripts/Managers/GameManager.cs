@@ -2,26 +2,73 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    [SerializeField] private Image canvasScreenImage;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     // Let's say player is bad.
     private static bool isPlayerGood = false;
 
     public static Action FlowTheGameAction;
 
-    IEnumerator Start()
+    private IEnumerator Start()
     {
+        StartCoroutine(ActivateCanvasScreenImageWithAnimation());
+
         yield return new WaitForSeconds(2f);
         FlowTheGameAction?.Invoke();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     FlowTheGameAction?.Invoke();
+        // }
+    }
+
+    public void FlowTheGame()
+    {
+        StartCoroutine(FlowTheGameWithFadeAnimationCoroutine());
+    }
+
+    private IEnumerator FlowTheGameWithFadeAnimationCoroutine()
+    {
+        canvasScreenImage.gameObject.SetActive(true);
+        // canvasScreenImage.GetComponent<Animator>().SetTrigger("FadeIn");
+        float imageAnimationLength = 1.5f;
+        yield return new WaitForSeconds(imageAnimationLength);
+
+        if (NPCTurnManager.GetNPCNumber() == 0)
         {
             FlowTheGameAction?.Invoke();
         }
+    }
+
+    public IEnumerator ActivateCanvasScreenImageWithAnimation()
+    {
+        canvasScreenImage.gameObject.SetActive(true);
+
+        float imageAnimationLength = 2.5f;
+        yield return new WaitForSeconds(imageAnimationLength);
+        canvasScreenImage.gameObject.SetActive(false);
+
     }
 
     // There will be 2 different people player can control in the game.

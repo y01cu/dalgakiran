@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -49,9 +50,16 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private Canvas teleportPanel;
+    [SerializeField] private Button buttonPlace1;
+    [SerializeField] private Button buttonPlace2;
+
+
     public void OpenTeleportPanel()
     {
-        Debug.Log("Teleport panel is opened.");
+        teleportPanel.gameObject.SetActive(true);
+
+        buttonPlace1.GetComponent<Animator>().SetTrigger("ScaleInAndOut");
     }
 
 

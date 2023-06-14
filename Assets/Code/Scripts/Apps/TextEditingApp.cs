@@ -23,9 +23,36 @@ public class TextEditingApp : MonoBehaviour
 
     private string topicHeader = "Bir konu seçiniz.";
     private string allegationHeader = "Bir iddia seçiniz.";
+    private string tweetHeader = "Bir paylaşım seçiniz.";
 
-    private void Start()
+    [SerializeField] private RectTransform scrollRectMaskPosts;
+    [SerializeField] private RectTransform[] posts;
+
+    private bool IsVisible(RectTransform objectRect, RectTransform scrollRectMask)
     {
+        // Convert the image position to the local coordinate system of the scroll rect
+        Vector3 imagePositionInScrollRect = scrollRectMask.InverseTransformPoint(objectRect.position);
+        Rect maskRect = new Rect(scrollRectMask.rect.x, scrollRectMask.rect.y, scrollRectMask.rect.width, scrollRectMask.rect.height);
+
+        // Check if the center of the image is within the mask area
+        return maskRect.Contains(imagePositionInScrollRect);
+    }
+
+    public void TrySendingPost()
+    {
+        foreach (var post in posts)
+        {
+            if (IsVisible(post, scrollRectMaskPosts))
+            {
+                Debug.Log("Post " + post.name + " is selected");
+            }
+        }
+    }
+
+    private IEnumerator Start()
+    {
+
+        // Make them inactive at the beginning.
         foreach (Button button in topicButtons)
         {
             button.gameObject.SetActive(false);
@@ -35,17 +62,21 @@ public class TextEditingApp : MonoBehaviour
         {
             button.gameObject.SetActive(false);
         }
-
+        headerText.gameObject.SetActive(false);
         headerText.text = topicHeader;
+
+
+        float initialWaitingDelayForImageAnimation = 4f;
+        yield return new WaitForSeconds(initialWaitingDelayForImageAnimation);
+
+
+        // Activate topic buttons
+        StartCoroutine(ActivateAndFillTopicButtonsIfEmptyCoroutine());
+
+        // Activate header text
+        headerText.gameObject.SetActive(true);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            StartCoroutine(ActivateAndFillTopicButtonsIfEmptyCoroutine());
-        }
-    }
 
     private bool doTopicButtonsHaveListeners = false;
 
@@ -53,6 +84,7 @@ public class TextEditingApp : MonoBehaviour
 
     private IEnumerator ActivateAndFillTopicButtonsIfEmptyCoroutine()
     {
+
         float initialWaitingTimeForHeaderTextAnimation = 3f;
         yield return new WaitForSeconds(initialWaitingTimeForHeaderTextAnimation);
 
@@ -63,24 +95,26 @@ public class TextEditingApp : MonoBehaviour
 
             StartCoroutine(PlayButtonAppearSoundCoroutine(button));
 
-            float cooldownForNextButton = 2.2f;
+            float cooldownForNextButton = 1.2f;
             yield return new WaitForSeconds(cooldownForNextButton);
             if (!doTopicButtonsHaveListeners)
             {
                 button.onClick.AddListener(() =>
                 {
                     button.gameObject.GetComponent<AudioSource>().PlayOneShot(buttonClickSound);
-                    // Deactivate topic buttons
+
                     foreach (Button button in topicButtons)
                     {
-                        button.gameObject.SetActive(false);
+                        button.interactable = false;
                     }
                     // -----
+                    StartCoroutine(DeactivateTopicButtons());
+
                     StartCoroutine(ActivateAllegationButtonsCoroutine());
 
                     // Animate header text
                     headerText.GetComponent<Animator>().SetTrigger("NextHeader");
-                    StartCoroutine(HeaderTextAnimationCoroutine());
+                    StartCoroutine(HeaderTextAllegationAnimationCoroutine());
                     // -----
 
                     bool isChoiceCorrect = button.gameObject.CompareTag("CorrectButton");
@@ -95,7 +129,7 @@ public class TextEditingApp : MonoBehaviour
                 });
             }
         }
-        float waitingTimeForTopicButtonsInteraction = 2f;
+        float waitingTimeForTopicButtonsInteraction = 0.5f;
         yield return new WaitForSeconds(waitingTimeForTopicButtonsInteraction);
         foreach (Button button in topicButtons)
         {
@@ -115,22 +149,22 @@ public class TextEditingApp : MonoBehaviour
 
             StartCoroutine(PlayButtonAppearSoundCoroutine(button));
 
-            float cooldownForNextButton = 2.2f;
+            float cooldownForNextButton = 1.2f;
             yield return new WaitForSeconds(cooldownForNextButton);
             if (!doTopicButtonsHaveListeners)
             {
                 button.onClick.AddListener(() =>
                 {
-                    // Deactivate topic buttons
+                    button.gameObject.GetComponent<AudioSource>().PlayOneShot(buttonClickSound);
                     foreach (Button button in allegationButtons)
                     {
-                        button.gameObject.SetActive(false);
+                        button.interactable = false;
                     }
                     // -----
-
+                    StartCoroutine(DeactivateAllegationButtons());
                     // Animate header text
-                    headerText.GetComponent<Animator>().SetTrigger("NextHeader");
-                    StartCoroutine(HeaderTextAnimationCoroutine());
+                    // headerText.GetComponent<Animator>().SetTrigger("NextHeader");
+                    // StartCoroutine(HeaderTextAnimationCoroutine());
                     // -----
 
                     // Check choice correctness and increment counter if correct
@@ -147,19 +181,52 @@ public class TextEditingApp : MonoBehaviour
                 });
             }
         }
-        float waitingTimeForTopicButtonsInteraction = 2f;
-        yield return new WaitForSeconds(waitingTimeForTopicButtonsInteraction);
+        float waitingTimeForAllegationButtonsInteraction = 0.5f;
+        yield return new WaitForSeconds(waitingTimeForAllegationButtonsInteraction);
         foreach (Button button in allegationButtons)
         {
             button.interactable = true;
         }
     }
 
-    // TODO configure this coroutine
-    private IEnumerator HeaderTextAnimationCoroutine()
+    private IEnumerator DeactivateAllegationButtons()
     {
-        yield return new WaitForSeconds(2.2f);
+        foreach (Button button in allegationButtons)
+        {
+            button.GetComponent<Animator>().SetTrigger("Disappear");
+        }
+        yield return new WaitForSeconds(2f);
+        foreach (Button button in allegationButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator DeactivateTopicButtons()
+    {
+        foreach (Button button in topicButtons)
+        {
+            button.GetComponent<Animator>().SetTrigger("Disappear");
+        }
+        yield return new WaitForSeconds(2f);
+        foreach (Button button in topicButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+    }
+
+    // TODO configure this coroutine
+    private IEnumerator HeaderTextAllegationAnimationCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
         headerText.text = allegationHeader;
+    }
+
+    private IEnumerator HeaderTextTweetAnimationCoroutine()
+    {
+        headerText.GetComponent<Animator>().SetTrigger("NextHeader");
+        yield return new WaitForSeconds(1f);
+        headerText.text = tweetHeader;
     }
 
     private IEnumerator CheckCorrectnessCounter()
@@ -173,6 +240,8 @@ public class TextEditingApp : MonoBehaviour
             Debug.Log("Well done!");
 
             correctnessCounter = 0;
+
+            StartCoroutine(OpenTweetChoicesPanel());
         }
         else
         {
@@ -184,6 +253,33 @@ public class TextEditingApp : MonoBehaviour
 
             StartCoroutine(RestartTextEditingApp());
         }
+    }
+
+    [SerializeField] private GameObject topicAndAllegationsPanel;
+    [SerializeField] private Button sendTweetButton;
+    [SerializeField] private ScrollRect scrollRect;
+
+
+    private IEnumerator OpenTweetChoicesPanel()
+    {
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(HeaderTextTweetAnimationCoroutine());
+
+        // -----
+        // Close topic and allegation panel
+
+        topicAndAllegationsPanel.GetComponent<Animator>().SetTrigger("ClosePanel");
+        yield return new WaitForSeconds(3f);
+        topicAndAllegationsPanel.gameObject.SetActive(false);
+
+        sendTweetButton.gameObject.SetActive(true);
+        scrollRect.gameObject.SetActive(true);
+
+    }
+
+    public void CallRestartTextEditingAppCoroutine()
+    {
+        StartCoroutine(RestartTextEditingApp());
     }
 
     private IEnumerator RestartTextEditingApp()
@@ -205,7 +301,21 @@ public class TextEditingApp : MonoBehaviour
 
     private IEnumerator PlayButtonAppearSoundCoroutine(Button button)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         button.GetComponent<AudioSource>().PlayOneShot(buttonAppearSound);
+    }
+
+    public void SendTweetAndCloseTheApp()
+    {
+        StartCoroutine(SendTweetAndCloseTheAppCoroutine());
+    }
+
+    [SerializeField] private TextEditingApp textEditingApp;
+
+    private IEnumerator SendTweetAndCloseTheAppCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+
+        textEditingApp.gameObject.SetActive(false);
     }
 }

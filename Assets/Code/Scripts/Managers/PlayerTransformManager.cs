@@ -56,7 +56,7 @@ public class PlayerTransformManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private Tablet tablet;
+    [SerializeField] private TabletManager tablet;
 
     private bool isPlayerLookingAtTheTablet = false;
 
