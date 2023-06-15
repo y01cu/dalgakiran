@@ -75,6 +75,9 @@ public class TextWriter : MonoBehaviour
         private float timer;
         private bool invisibleCharacters;
         private Action onComplete;
+        // -----
+        // Added for smooth ink integration
+        private bool isCurrentCanvasDialogEnded;
 
         public TextWriterSingle(TextMeshProUGUI uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, Action onComplete)
         {
@@ -92,9 +95,18 @@ public class TextWriter : MonoBehaviour
             timer -= Time.deltaTime;
             while (timer <= 0f)
             {
+                // Added the if condition above to prevent the text from being written when the current canvas dialog is ended
+
                 // Display next character
                 timer += timePerCharacter;
                 characterIndex++;
+
+                // Added in order to get rid of ArgumentOutOfRangeException
+                if (textToWrite == "")
+                {
+                    return false;
+                }
+
                 string text = textToWrite.Substring(0, characterIndex);
                 if (invisibleCharacters)
                 {
@@ -112,7 +124,10 @@ public class TextWriter : MonoBehaviour
                     }
                     return true;
                 }
+
+
             }
+
             return false;
         }
 

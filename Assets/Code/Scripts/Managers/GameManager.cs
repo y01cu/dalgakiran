@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(ActivateCanvasScreenImageWithAnimation());
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         FlowTheGameAction?.Invoke();
     }
 
@@ -52,20 +52,25 @@ public class GameManager : MonoBehaviour
     {
         canvasScreenImage.gameObject.SetActive(true);
         // canvasScreenImage.GetComponent<Animator>().SetTrigger("FadeIn");
-        float imageAnimationLength = 1.5f;
-        yield return new WaitForSeconds(imageAnimationLength);
 
         if (NPCTurnManager.GetNPCNumber() == 0)
         {
             FlowTheGameAction?.Invoke();
         }
+
+        float imageAnimationCooldown = 3f;
+        yield return new WaitForSeconds(imageAnimationCooldown);
+        canvasScreenImage.gameObject.SetActive(false);
+
     }
+
+    // I need to delete what's unnecessary in the future
 
     public IEnumerator ActivateCanvasScreenImageWithAnimation()
     {
         canvasScreenImage.gameObject.SetActive(true);
 
-        float imageAnimationLength = 2.5f;
+        float imageAnimationLength = 2.7f;
         yield return new WaitForSeconds(imageAnimationLength);
         canvasScreenImage.gameObject.SetActive(false);
 

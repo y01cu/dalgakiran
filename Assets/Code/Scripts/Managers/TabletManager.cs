@@ -14,7 +14,6 @@ public class TabletManager : MonoBehaviour
     [SerializeField] private GameObject textEditingAppButton;
     [SerializeField] private GameObject socialMediaAppButton;
 
-
     // If required I can add an action for here
     public static Action IncrementAvailableAppsAction;
     // Using action makes some function impossible to be called without another and it includes both name as well I guess.

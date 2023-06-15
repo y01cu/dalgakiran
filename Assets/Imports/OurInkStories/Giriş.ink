@@ -1,4 +1,6 @@
 EXTERNAL ActivateNextApp()
+EXTERNAL FlowTheGame()
+EXTERNAL DestroyCanvas()
 
 - Hoşgeldin DalgaKıran'a, burası dezenformasyonun karmaşık dünyasına bir yolculuk. Burada yaptıklarımız, insanların düşüncelerini, inançlarını ve hatta yaşamlarını derinden etkileyebilir. Hazır mısın bu yolculuğa çıkmaya?
 
@@ -15,4 +17,7 @@ EXTERNAL ActivateNextApp()
         ~ActivateNextApp()
             --- Ne gördün
             *** [Hiiç]
-        
+                ---- Pekâlâ. Şimdi ilk arkadaşınla tanışma vakti.
+                **** [Görüşürüz]
+                    ~FlowTheGame()
+                        ~DestroyCanvas()

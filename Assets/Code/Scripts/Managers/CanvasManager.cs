@@ -38,6 +38,13 @@ public class CanvasManager : MonoBehaviour
 
     private void ActivateCanvasBasedOnTurnAndKind()
     {
+        StartCoroutine(ActivateCanvasBasedOnTurnAndKindCoroutine());
+    }
+
+    private IEnumerator ActivateCanvasBasedOnTurnAndKindCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+
         bool isPlayerGood = GameManager.ReturnPlayerRole();
 
         if (isPlayerGood)

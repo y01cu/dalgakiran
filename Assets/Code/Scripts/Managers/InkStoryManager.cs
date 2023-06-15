@@ -40,6 +40,11 @@ public class InkStoryManager : MonoBehaviour
         // StartStory();
     }
 
+    private void Start()
+    {
+        OpenCanvasAgainAction += CallOpenCanvasAgainAndContinueCoroutine;
+    }
+
     // Creates a new Story object with the compiled story which we can then play!
     public void StartStory()
     {
@@ -75,13 +80,36 @@ public class InkStoryManager : MonoBehaviour
             // Activate next app and close canvas
             TabletManager.IncrementAvailableAppsAction();
 
-            // Open it again after certain time
-            StartCoroutine(OpenCanvasAgainAndContinueCoroutine(5));
+            // // Open it again after certain time
+            // CallOpenCanvasAgainAndContinueCoroutine();
 
+            // Close the text writing process
             SetAlpha(GetComponent<Image>(), 0f);
             DeactivateChildren();
 
         });
+
+        story.BindExternalFunction("FlowTheGame", () =>
+        {
+            GameManager.Instance.FlowTheGame();
+        });
+
+        story.BindExternalFunction("DestroyCanvas", () =>
+        {
+            // Destroy your own parent
+            Destroy(gameObject.transform.parent.gameObject);
+        });
+    }
+
+    private void MakeCanvasInvisible()
+    {
+        SetAlpha(GetComponent<Image>(), 0f);
+    }
+
+    private void CallOpenCanvasAgainAndContinueCoroutine()
+    {
+        StartCoroutine(OpenCanvasAgainAndContinueCoroutine(5));
+
     }
 
     private void DeactivateChildren()
@@ -108,15 +136,12 @@ public class InkStoryManager : MonoBehaviour
 
     [SerializeField] private Canvas parentCanvas;
 
-    private void CloseCanvas()
-    {
-        parentCanvas.gameObject.SetActive(false);
-    }
+    public static Action OpenCanvasAgainAction;
 
     private IEnumerator OpenCanvasAgainAndContinueCoroutine(float time)
     {
         yield return new WaitForSeconds(time);
-        SetAlpha(GetComponent<Image>(), 1);
+        SetAlpha(GetComponent<Image>(), 0.9f);
         ActivateChildren();
         // Let's try it without refreshing the view
     }
@@ -133,6 +158,13 @@ public class InkStoryManager : MonoBehaviour
     // Continues over all the lines of text, then displays all the choices. If there are no choices, the story is finished!
     private void RefreshView()
     {
+        StartCoroutine(RefreshViewCoroutine());
+    }
+
+    private IEnumerator RefreshViewCoroutine()
+    {
+        float cooldown = 0.4f;
+        yield return new WaitForSeconds(cooldown);
         // Remove all the UI on screen
         RemoveChildren();
 
