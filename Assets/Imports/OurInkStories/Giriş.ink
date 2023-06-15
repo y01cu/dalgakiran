@@ -17,7 +17,10 @@ EXTERNAL DestroyCanvas()
         ~ActivateNextApp()
             --- Ne gördün
             *** [Hiiç]
-                ---- Pekâlâ. Şimdi ilk arkadaşınla tanışma vakti.
-                **** [Görüşürüz]
-                    ~FlowTheGame()
-                        ~DestroyCanvas()
+                ---- Şimdide sosyal medya uygulamasına bak bakim
+                **** Peki
+                    ~ActivateNextApp()
+                    ----- Pekâlâ. Şimdi ilk arkadaşınla tanışma vakti.
+                    ***** [Görüşürüz]
+                        ~FlowTheGame()
+                            ~DestroyCanvas()

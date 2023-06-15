@@ -108,8 +108,8 @@ public class InkStoryManager : MonoBehaviour
 
     private void CallOpenCanvasAgainAndContinueCoroutine()
     {
-        StartCoroutine(OpenCanvasAgainAndContinueCoroutine(5));
-
+        float canvasOpeningCooldown = 3f;
+        StartCoroutine(OpenCanvasAgainAndContinueCoroutine(canvasOpeningCooldown));
     }
 
     private void DeactivateChildren()
@@ -151,7 +151,6 @@ public class InkStoryManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         audioSource.PlayOneShot(huhSound);
     }
-
 
     // This is the main function called every time the story changes. It does a few things:
     // Destroys all the old content and choices.
@@ -214,7 +213,9 @@ public class InkStoryManager : MonoBehaviour
     private void OnClickChoiceButton(Choice choice)
     {
         story.ChooseChoiceIndex(choice.index);
-        RefreshView();
+
+        StartCoroutine(RefreshViewCoroutine());
+        // RefreshView();
     }
 
     // Creates a textbox showing the the line of text
@@ -233,11 +234,21 @@ public class InkStoryManager : MonoBehaviour
         {
             PlaySoundEffect_TextWriting();
             textWriterSingle = TextWriter.AddWriterWithSpeed_Static(storyText, text, textWritingSpeed, true, true, StopSoundEffectAndDisplayChoices);
+
+            // Previously
+            // Send what's required into the coroutine
+            // StartCoroutine(CreateContentViewElseBlockCoroutine(storyText, text));
         }
 
         Transform textField = transform.Find("TextField").transform;
 
         storyText.transform.SetParent(textField.transform, false);
+    }
+
+    private IEnumerator CreateContentViewElseBlockCoroutine(TextMeshProUGUI storyText, string text)
+    {
+        // Not used
+        yield return new WaitForSeconds(0.2f);
     }
 
     private void PlaySoundEffect_TextWriting()
