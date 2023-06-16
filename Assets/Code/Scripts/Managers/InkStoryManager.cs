@@ -99,6 +99,13 @@ public class InkStoryManager : MonoBehaviour
             // Destroy your own parent
             Destroy(gameObject.transform.parent.gameObject);
         });
+        story.BindExternalFunction("FillPosts", () =>
+        {
+            // Fill the posts
+            // SocialMediaAppManager.Instance.FillPosts();
+
+        });
+
     }
 
     private void MakeCanvasInvisible()

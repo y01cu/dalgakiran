@@ -11,7 +11,7 @@ scopes = {
 	"last_search.DA949528" = "node"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
-	"last_search.310DEAF1" = "missing:Script"
+	"last_search.310DEAF1" = "t:TrackedDeviceGraphicRaycaster"
 	"OpenInspectorPreview.310DEAF1" = "0"
 	"currentGroup.310DEAF1" = "all"
 	"last_search.3BE40471" = "t:AudioSource"
@@ -68,12 +68,13 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"missing:Script"
+	"t:TrackedDeviceGraphicRaycaster"
 	""
+	"t:Canvas"
+	"missing:Script"
 	"h: t:"
 	"h: t:Animator"
 	"t:CanvasScaler"
-	"t:Canvas"
 	"t:CanvasGroup"
 	"C"
 	"a"

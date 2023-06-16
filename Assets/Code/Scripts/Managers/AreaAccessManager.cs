@@ -13,7 +13,6 @@ public class AreaAccessManager : MonoBehaviour
     public static Action TeleportToArea2;
     public static Action TeleportToArea3;
 
-
     [SerializeField] private Button buttonArea1;
     [SerializeField] private Button buttonArea2;
     [SerializeField] private Button buttonArea3;

@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 3720032942980749496}
   - component: {fileID: 5872528438177128745}
   - component: {fileID: 386559015407966882}
-  - component: {fileID: 3883011450465212773}
   - component: {fileID: 3096260819832592370}
   - component: {fileID: 5419453670487755178}
   m_Layer: 5
@@ -203,21 +202,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3883011450465212773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2472368506840087585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5464cd428545dc549ba202c61725757d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstButtons:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &3096260819832592370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 5419453670487755178}
   huhSound: {fileID: 8300000, guid: 9f8baf2cd91186943954b75da3bfd798, type: 3}
+  parentCanvas: {fileID: 0}
   inkJSONAsset: {fileID: 4900000, guid: 55ccdbab8471ecc42af398eda833ba11, type: 3}
   textPrefab: {fileID: 3477016075511477201, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2,
     type: 3}
@@ -346,7 +331,6 @@ GameObject:
   - component: {fileID: 4059587447323269393}
   - component: {fileID: 8714109642273574084}
   - component: {fileID: 6418923401444360967}
-  - component: {fileID: 2671642055022923666}
   m_Layer: 5
   m_Name: Canvas Welcome
   m_TagString: Untagged
@@ -368,11 +352,11 @@ RectTransform:
   m_Children:
   - {fileID: 3531849144092597351}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -0.348, y: -46.7, z: 1.051}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -24.589, y: 10.965}
+  m_AnchoredPosition: {x: -24.58899, y: 10.965027}
   m_SizeDelta: {x: 250, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4059587447323269393
@@ -438,23 +422,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2671642055022923666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2987239911190779819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d56e7cb85109d424087efac6a7d4459d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  socialMediaApp: {fileID: 0}
-  messagingApp: {fileID: 0}
-  imageEditingApp: {fileID: 0}
-  videoEditingApp: {fileID: 0}
-  appClickSFX: {fileID: 0}
 --- !u!1001 &1224890891470884110
 PrefabInstance:
   m_ObjectHideFlags: 0

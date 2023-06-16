@@ -55,8 +55,8 @@ public class TabletManager : MonoBehaviour
 
             case 1:
 
-                messagingAppButton.SetActive(true);
-                socialMediaAppButton.SetActive(false);
+                messagingAppButton.SetActive(false);
+                socialMediaAppButton.SetActive(true);
                 textEditingAppButton.SetActive(false);
                 imageEditingAppButton.SetActive(false);
                 videoManipulationAppButton.SetActive(false);
@@ -103,5 +103,10 @@ public class TabletManager : MonoBehaviour
 
                 break;
         }
+    }
+
+    public static int GetAvailableApps()
+    {
+        return availableApps;
     }
 }

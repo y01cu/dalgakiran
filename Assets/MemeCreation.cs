@@ -12,7 +12,6 @@ public class MemeCreation : MonoBehaviour
     [SerializeField] private RectTransform scrollRectMaskTexts;
     [SerializeField] private RectTransform[] texts;
 
-
     private bool IsVisible(RectTransform objectRect, RectTransform scrollRectMask)
     {
         // Convert the image position to the local coordinate system of the scroll rect

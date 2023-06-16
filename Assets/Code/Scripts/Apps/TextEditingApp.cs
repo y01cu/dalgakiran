@@ -10,9 +10,27 @@ public class TextEditingApp : MonoBehaviour
 
     [Header("Topics")]
     [SerializeField] private List<Button> topicButtons;
+    [SerializeField] private List<string> topicsOneAndBad;
+    [SerializeField] private List<string> topicsTwoAndBad;
+    [SerializeField] private List<string> topicsThreeAndBad;
+
+    [SerializeField] private List<string> topicsOneAndGood;
+    [SerializeField] private List<string> topicsTwoAndGood;
+    [SerializeField] private List<string> topicsThreeAndGood;
+
 
     [Header("Allegations")]
     [SerializeField] private List<Button> allegationButtons;
+    [SerializeField] private List<string> allegationsOneAndBad;
+    [SerializeField] private List<string> allegationsTwoAndBad;
+    [SerializeField] private List<string> allegationsThreeAndBad;
+
+    [SerializeField] private List<string> allegationsOneAndGood;
+    [SerializeField] private List<string> allegationsTwoAndGood;
+    [SerializeField] private List<string> allegationsThreeAndGood;
+
+    // I can add right part if time will be enough but I'll keep the naming same
+    // [SerializeField] private List<GameObject> tweetsOneAndBadAndRight;
 
     [Header("Header Text")]
     [SerializeField] private TextMeshProUGUI headerText;
@@ -27,6 +45,8 @@ public class TextEditingApp : MonoBehaviour
 
     [SerializeField] private RectTransform scrollRectMaskPosts;
     [SerializeField] private RectTransform[] posts;
+
+    private static int appProgress = 0;
 
     private bool IsVisible(RectTransform objectRect, RectTransform scrollRectMask)
     {
@@ -51,6 +71,7 @@ public class TextEditingApp : MonoBehaviour
 
     private IEnumerator Start()
     {
+        appProgress++;
 
         // Make them inactive at the beginning.
         foreach (Button button in topicButtons)
@@ -76,6 +97,80 @@ public class TextEditingApp : MonoBehaviour
         // Activate header text
         headerText.gameObject.SetActive(true);
     }
+
+    // I can fill in the content of this app using a function and adding it to the start method. It's that easy.
+
+    private void FillContent()
+    {
+        // Fill topic buttons
+        // Fill allegation buttons
+        // Fill tweets
+
+        bool isPlayerGood = GameManager.ReturnPlayerRole();
+
+        bool isAppProgressOneAndBad = appProgress == 1 && !isPlayerGood;
+        bool isAppProgressTwoAndBad = appProgress == 2 && !isPlayerGood;
+        bool isAppProgressThreeAndBad = appProgress == 3 && !isPlayerGood;
+
+        bool isAppProgressOneAndGood = appProgress == 1 && isPlayerGood;
+        bool isAppProgressTwoAndGood = appProgress == 2 && isPlayerGood;
+        bool isAppProgressThreeAndGood = appProgress == 3 && isPlayerGood;
+
+        // All conditions are listed here below
+        if (isAppProgressOneAndBad)
+        {
+
+        }
+        else if (isAppProgressTwoAndBad)
+        {
+
+        }
+        else if (isAppProgressThreeAndBad)
+        {
+
+        }
+        else if (isAppProgressOneAndGood)
+        {
+
+        }
+        else if (isAppProgressTwoAndGood)
+        {
+
+        }
+        else if (isAppProgressThreeAndGood)
+        {
+
+        }
+
+
+        // for (int i = 0; i <= 3; i++)
+        // {
+        //     if (appProgress == 1)
+        //     {
+        //         Debug.Log("Available app count: " + TabletManager.GetAvailableApps());
+        //         tweetsList[i].transform.Find("ProfileImage").GetComponent<Image>().sprite = profileImagesFirst[i];
+        //         tweetsList[i].transform.Find("ProfileNameText").GetComponent<TextMeshProUGUI>().text = profileNamesFirst[i];
+        //         tweetsList[i].transform.Find("TweetText").GetComponent<TextMeshProUGUI>().text = tweetsFirst[i];
+
+        //         // tweetsList[i].GetComponent<TextMeshProUGUI>().text = tweetsFirst[i];
+
+        //     }
+        //     else if (TabletManager.GetAvailableApps() == 2)
+        //     {
+        //         Debug.Log("Available app count: " + TabletManager.GetAvailableApps());
+
+        //         tweetsList[i].transform.Find("ProfileImage").GetComponent<Image>().sprite = profileImagesSecond[i];
+        //         tweetsList[i].transform.Find("ProfileNameText").GetComponent<TextMeshProUGUI>().text = profileNamesSecond[i];
+        //         tweetsList[i].transform.Find("TweetText").GetComponent<TextMeshProUGUI>().text = tweetsSecond[i];
+        //     }
+        // }
+
+    }
+
+
+
+
+
 
 
     private bool doTopicButtonsHaveListeners = false;
@@ -318,4 +413,5 @@ public class TextEditingApp : MonoBehaviour
 
         textEditingApp.gameObject.SetActive(false);
     }
+
 }

@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Level/Scenes/BasicAnimation.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 47581a7c4de72a54386d8d412236007e,
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a4ee4f5563f074d4bb68119989209284,
       type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: aa53f20de3b5d7f45819e00e980b3bc6,
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 007ff82c18129744b8b03c5d45d56c51,
       type: 2}

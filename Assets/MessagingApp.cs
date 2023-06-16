@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MessagingApp : MonoBehaviour
 {
+
     private bool isPlayerAtHome;
 
     public void OpenCanvasAgainIfPlayerIsAtHome()

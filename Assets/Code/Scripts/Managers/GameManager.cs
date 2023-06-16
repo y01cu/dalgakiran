@@ -53,13 +53,16 @@ public class GameManager : MonoBehaviour
         canvasScreenImage.gameObject.SetActive(true);
         // canvasScreenImage.GetComponent<Animator>().SetTrigger("FadeIn");
 
-        if (NPCTurnManager.GetNPCNumber() == 0)
-        {
-            FlowTheGameAction?.Invoke();
-        }
+        // if (NPCTurnManager.GetNPCNumber() == 0)
+        // {
+
+        FlowTheGameAction?.Invoke();
+
+        // }
 
         float imageAnimationCooldown = 3f;
         yield return new WaitForSeconds(imageAnimationCooldown);
+        // Set it active so that we can use it later
         canvasScreenImage.gameObject.SetActive(false);
 
     }

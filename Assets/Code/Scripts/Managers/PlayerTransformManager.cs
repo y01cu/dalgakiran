@@ -6,9 +6,10 @@ public class PlayerTransformManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> goodPlayerPositions;
     [SerializeField] private List<Transform> badPlayerPositions;
-    [SerializeField] private Camera mainCamera;
-    private Transform playerActualTransform;
 
+    [SerializeField] private Camera mainCamera;
+
+    private Transform playerActualTransform;
 
     private void Start()
     {

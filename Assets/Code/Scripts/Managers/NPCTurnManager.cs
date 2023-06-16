@@ -31,9 +31,4 @@ public class NPCTurnManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-
-    }
-
 }
