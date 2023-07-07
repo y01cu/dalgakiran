@@ -6,6 +6,20 @@ using TMPro;
 
 public class TextEditingApp : MonoBehaviour
 {
+    public static TextEditingApp Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     [SerializeField] private Button exitButton;
 
     [Header("Topics")]
@@ -29,6 +43,16 @@ public class TextEditingApp : MonoBehaviour
     [SerializeField] private List<string> allegationsTwoAndGood;
     [SerializeField] private List<string> allegationsThreeAndGood;
 
+    [SerializeField] private List<GameObject> selectableTweetObjects;
+
+    [SerializeField] private List<string> selectableTweetsTextOneAndBad;
+    [SerializeField] private List<string> selectableTweetsTextTwoAndBad;
+    [SerializeField] private List<string> selectableTweetsTextThreeAndBad;
+
+    [SerializeField] private List<string> selectableTweetsTextOneAndGood;
+    [SerializeField] private List<string> selectableTweetsTextTwoAndGood;
+    [SerializeField] private List<string> selectableTweetsTextThreeAndGood;
+
     // I can add right part if time will be enough but I'll keep the naming same
     // [SerializeField] private List<GameObject> tweetsOneAndBadAndRight;
 
@@ -47,6 +71,11 @@ public class TextEditingApp : MonoBehaviour
     [SerializeField] private RectTransform[] posts;
 
     private static int appProgress = 0;
+
+    public static void IncrementAppProgress()
+    {
+        appProgress++;
+    }
 
     private bool IsVisible(RectTransform objectRect, RectTransform scrollRectMask)
     {
@@ -69,9 +98,16 @@ public class TextEditingApp : MonoBehaviour
         }
     }
 
+    public void OpenCanvasAgain()
+    {
+        InkStoryManager.OpenCanvasAgainAction?.Invoke();
+    }
+
     private IEnumerator Start()
     {
-        appProgress++;
+        // appProgress++;
+
+        TextEditingAppFillContent();
 
         // Make them inactive at the beginning.
         foreach (Button button in topicButtons)
@@ -100,12 +136,16 @@ public class TextEditingApp : MonoBehaviour
 
     // I can fill in the content of this app using a function and adding it to the start method. It's that easy.
 
-    private void FillContent()
+    public void TextEditingAppFillContent()
     {
-        // Fill topic buttons
-        // Fill allegation buttons
+        // Fill buttons
         // Fill tweets
+        FillInButtons();
+        FillInSelectableTweets();
+    }
 
+    private void FillInButtons()
+    {
         bool isPlayerGood = GameManager.ReturnPlayerRole();
 
         bool isAppProgressOneAndBad = appProgress == 1 && !isPlayerGood;
@@ -119,59 +159,113 @@ public class TextEditingApp : MonoBehaviour
         // All conditions are listed here below
         if (isAppProgressOneAndBad)
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                topicButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = topicsOneAndBad[i];
+                allegationButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = allegationsOneAndBad[i];
+            }
         }
         else if (isAppProgressTwoAndBad)
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                topicButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = topicsTwoAndBad[i];
+                allegationButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = allegationsTwoAndBad[i];
+            }
         }
         else if (isAppProgressThreeAndBad)
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                topicButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = topicsThreeAndBad[i];
+                allegationButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = allegationsThreeAndBad[i];
+            }
         }
         else if (isAppProgressOneAndGood)
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                topicButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = topicsOneAndGood[i];
+                allegationButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = allegationsOneAndGood[i];
+            }
         }
         else if (isAppProgressTwoAndGood)
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                topicButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = topicsTwoAndGood[i];
+                allegationButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = allegationsTwoAndGood[i];
+            }
         }
         else if (isAppProgressThreeAndGood)
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                topicButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = topicsThreeAndGood[i];
+                allegationButtons[i].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = allegationsThreeAndGood[i];
+            }
         }
 
 
-        // for (int i = 0; i <= 3; i++)
-        // {
-        //     if (appProgress == 1)
-        //     {
-        //         Debug.Log("Available app count: " + TabletManager.GetAvailableApps());
-        //         tweetsList[i].transform.Find("ProfileImage").GetComponent<Image>().sprite = profileImagesFirst[i];
-        //         tweetsList[i].transform.Find("ProfileNameText").GetComponent<TextMeshProUGUI>().text = profileNamesFirst[i];
-        //         tweetsList[i].transform.Find("TweetText").GetComponent<TextMeshProUGUI>().text = tweetsFirst[i];
-
-        //         // tweetsList[i].GetComponent<TextMeshProUGUI>().text = tweetsFirst[i];
-
-        //     }
-        //     else if (TabletManager.GetAvailableApps() == 2)
-        //     {
-        //         Debug.Log("Available app count: " + TabletManager.GetAvailableApps());
-
-        //         tweetsList[i].transform.Find("ProfileImage").GetComponent<Image>().sprite = profileImagesSecond[i];
-        //         tweetsList[i].transform.Find("ProfileNameText").GetComponent<TextMeshProUGUI>().text = profileNamesSecond[i];
-        //         tweetsList[i].transform.Find("TweetText").GetComponent<TextMeshProUGUI>().text = tweetsSecond[i];
-        //     }
-        // }
-
     }
 
+    private void FillInSelectableTweets()
+    {
+        bool isPlayerGood = GameManager.ReturnPlayerRole();
 
+        bool isAppProgressOneAndBadForSelectableTweets = appProgress == 1 && !isPlayerGood;
+        bool isAppProgressTwoAndBadForSelectableTweets = appProgress == 2 && !isPlayerGood;
+        bool isAppProgressThreeAndBadForSelectableTweets = appProgress == 3 && !isPlayerGood;
 
+        bool isAppProgressOneAndGoodForSelectableTweets = appProgress == 1 && isPlayerGood;
+        bool isAppProgressTwoAndGoodForSelectableTweets = appProgress == 2 && isPlayerGood;
+        bool isAppProgressThreeAndGoodForSelectableTweets = appProgress == 3 && isPlayerGood;
 
+        // All conditions are listed here below
+        if (isAppProgressOneAndBadForSelectableTweets)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                selectableTweetObjects[i].transform.Find("Text").GetComponent<TextMeshProUGUI>().text = selectableTweetsTextOneAndBad[i];
+            }
+        }
+        else if (isAppProgressTwoAndBadForSelectableTweets)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                selectableTweetObjects[i].transform.Find("Text").GetComponent<TextMeshProUGUI>().text = selectableTweetsTextTwoAndBad[i];
 
-
+            }
+        }
+        else if (isAppProgressThreeAndBadForSelectableTweets)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                selectableTweetObjects[i].transform.Find("Text").GetComponent<TextMeshProUGUI>().text = selectableTweetsTextThreeAndBad[i];
+            }
+        }
+        else if (isAppProgressOneAndGoodForSelectableTweets)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                selectableTweetObjects[i].transform.Find("Text").GetComponent<TextMeshProUGUI>().text = selectableTweetsTextOneAndGood[i];
+            }
+        }
+        else if (isAppProgressTwoAndGoodForSelectableTweets)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                selectableTweetObjects[i].transform.Find("Text").GetComponent<TextMeshProUGUI>().text = selectableTweetsTextTwoAndGood[i];
+            }
+        }
+        else if (isAppProgressThreeAndGoodForSelectableTweets)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                selectableTweetObjects[i].transform.Find("Text").GetComponent<TextMeshProUGUI>().text = selectableTweetsTextThreeAndGood[i];
+            }
+        }
+    }
 
     private bool doTopicButtonsHaveListeners = false;
 
@@ -337,6 +431,9 @@ public class TextEditingApp : MonoBehaviour
             correctnessCounter = 0;
 
             StartCoroutine(OpenTweetChoicesPanel());
+
+            // Open canvas again so that the game can continue
+            InkStoryManager.OpenCanvasAgainAction?.Invoke();
         }
         else
         {

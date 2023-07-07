@@ -3,7 +3,7 @@ refreshSearchWindowsInPlayMode = false
 fetchPreview = true
 defaultFlags = 0
 keepOpen = false
-queryFolder = "Assets"
+queryFolder = "Assets/OtherFolders"
 onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
@@ -11,9 +11,9 @@ scopes = {
 	"last_search.DA949528" = "node"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
-	"last_search.310DEAF1" = "t:TrackedDeviceGraphicRaycaster"
+	"last_search.310DEAF1" = "t:scene DalgaKıra"
 	"OpenInspectorPreview.310DEAF1" = "0"
-	"currentGroup.310DEAF1" = "all"
+	"currentGroup.310DEAF1" = "asset"
 	"last_search.3BE40471" = "t:AudioSource"
 	"OpenInspectorPreview.3BE40471" = "0"
 	"currentGroup.3BE40471" = "all"
@@ -68,8 +68,12 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"t:TrackedDeviceGraphicRaycaster"
+	"t:scene DalgaKıra"
 	""
+	"t:scene DalgaKıran"
+	"t:scene "
+	"t:scene"
+	"t:TrackedDeviceGraphicRaycaster"
 	"t:Canvas"
 	"missing:Script"
 	"h: t:"
@@ -83,20 +87,14 @@ recentSearches = [
 	".anim"
 	"prefab:any Cyberpunk_Scene"
 	"prefab:any"
-	"prefga"
-	"i"
-	"missing:Any ref=<$object:none,GameObject$>"
-	"missing:Any"
-	"missing:Script salute"
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
-showSavedSearchPanel = false
+showSavedSearchPanel = true
 hideTabs = false
-expandedQueries = [
-]
-queryBuilder = true
+expandedQueries = [-1765347274 961552606]
+queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "h:"
 disabledIndexers = ""

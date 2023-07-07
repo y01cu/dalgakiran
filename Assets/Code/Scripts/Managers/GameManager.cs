@@ -37,10 +37,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     FlowTheGameAction?.Invoke();
-        // }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FlowTheGameAction?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            TabletManager.IncrementAvailableAppsAction();
+        }
     }
 
     public void FlowTheGame()
@@ -51,20 +55,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator FlowTheGameWithFadeAnimationCoroutine()
     {
         canvasScreenImage.gameObject.SetActive(true);
-        // canvasScreenImage.GetComponent<Animator>().SetTrigger("FadeIn");
-
-        // if (NPCTurnManager.GetNPCNumber() == 0)
-        // {
-
         FlowTheGameAction?.Invoke();
-
-        // }
-
         float imageAnimationCooldown = 3f;
         yield return new WaitForSeconds(imageAnimationCooldown);
         // Set it active so that we can use it later
         canvasScreenImage.gameObject.SetActive(false);
-
     }
 
     // I need to delete what's unnecessary in the future
@@ -78,6 +73,8 @@ public class GameManager : MonoBehaviour
         canvasScreenImage.gameObject.SetActive(false);
 
     }
+
+
 
     // There will be 2 different people player can control in the game.
     // Each of them will face 3 different NPCs.

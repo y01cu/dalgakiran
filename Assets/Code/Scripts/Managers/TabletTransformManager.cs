@@ -15,8 +15,7 @@ public class TabletTransformManager : MonoBehaviour
     {
         // Calling flow the game action happens in PlayerTransformManager class. Then there's no need to call it here.
 
-        GameManager.FlowTheGameAction +=
-        SetTabletPositionBasedOnTurnAndKind;
+        GameManager.FlowTheGameAction += SetTabletPositionBasedOnTurnAndKind;
     }
 
     private void SetTabletPositionBasedOnTurnAndKind()

@@ -20,14 +20,8 @@ public class InkStoryManager : MonoBehaviour
 
     private TextWriter.TextWriterSingle textWriterSingle;
     // [Range(0, 1)]
-    // [SerializeField] 
+    // [SerializeField]
     private float textWritingSpeed;
-
-    /*
-         _inkStory.BindExternalFunction ("playSound", (string name) => {
-            _audioController.Play(name);
-        });    
-    */
 
     // This is a super bare bones example of how to play and display a ink story in Unity.
     public static event Action<Story> OnCreateStory;
@@ -58,18 +52,6 @@ public class InkStoryManager : MonoBehaviour
 
     private void InkBindExternalFunctions()
     {
-        story.BindExternalFunction("ActivateTempButton", (string name) =>
-        {
-
-        });
-
-        story.BindExternalFunction("OpenTeleportPanel", () =>
-        {
-            // CanvasManager.Instance.OpenTeleportPanel();
-            // GetComponentInParent<Canvas>().gameObject.SetActive(false);
-            // teleportPanel.gameObject.SetActive(true);
-        });
-
         story.BindExternalFunction("PlayHuhSound", () =>
         {
             StartCoroutine(WaitHuhSound());
@@ -79,14 +61,19 @@ public class InkStoryManager : MonoBehaviour
         {
             // Activate next app and close canvas
             TabletManager.IncrementAvailableAppsAction();
+        });
 
-            // // Open it again after certain time
-            // CallOpenCanvasAgainAndContinueCoroutine();
+        story.BindExternalFunction("MakeCanvasDissappear", () =>
+        {
+            // Activate next app and close canvas
+            // TabletManager.IncrementAvailableAppsAction();
 
             // Close the text writing process
             SetAlpha(GetComponent<Image>(), 0f);
             DeactivateChildren();
 
+            // Close the canvas
+            // GetComponentInParent<Canvas>().gameObject.SetActive(false);
         });
 
         story.BindExternalFunction("FlowTheGame", () =>
@@ -99,13 +86,20 @@ public class InkStoryManager : MonoBehaviour
             // Destroy your own parent
             Destroy(gameObject.transform.parent.gameObject);
         });
-        story.BindExternalFunction("FillPosts", () =>
+        story.BindExternalFunction("IncrementTextEditingApp", () =>
         {
-            // Fill the posts
-            // SocialMediaAppManager.Instance.FillPosts();
-
+            // Fill the messages
+            // SocialMediaAppManager.Instance.FillMessages();
+            TextEditingApp.IncrementAppProgress();
+            TextEditingApp.Instance.TextEditingAppFillContent();
         });
-
+        story.BindExternalFunction("IncrementSocialMediaApp", () =>
+        {
+            // Fill the messages
+            // SocialMediaAppManager.Instance.FillMessages();
+            SocialMediaAppManager.IncrementAppProgress();
+            SocialMediaAppManager.Instance.FillPosts();
+        });
     }
 
     private void MakeCanvasInvisible()
