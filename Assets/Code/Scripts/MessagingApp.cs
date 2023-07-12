@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MessagingApp : MonoBehaviour
+public class MessagingApp : App
 {
-
     private bool isPlayerAtHome;
 
     public void OpenCanvasAgainIfPlayerIsAtHome()

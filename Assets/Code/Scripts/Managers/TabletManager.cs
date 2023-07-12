@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 public class TabletManager : MonoBehaviour
 {
     private static int availableApps = 0;
-
+    [Header("App buttons")]
     [SerializeField] private GameObject messagingAppButton;
     [SerializeField] private GameObject imageEditingAppButton;
     [SerializeField] private GameObject videoManipulationAppButton;
@@ -17,6 +16,13 @@ public class TabletManager : MonoBehaviour
     // If required I can add an action for here
     public static Action IncrementAvailableAppsAction;
     // Using action makes some function impossible to be called without another and it includes both name as well I guess.
+
+    [Header("Apps")]
+    [SerializeField] private GameObject messagingApp;
+    [SerializeField] private GameObject imageEditingApp;
+    [SerializeField] private GameObject videoManipulationApp;
+    [SerializeField] private GameObject textEditingApp;
+    [SerializeField] private GameObject socialMediaApp;
 
     private void Start()
     {
@@ -44,7 +50,6 @@ public class TabletManager : MonoBehaviour
         switch (availableApps)
         {
             case 0:
-
                 messagingAppButton.SetActive(false);
                 socialMediaAppButton.SetActive(false);
                 textEditingAppButton.SetActive(false);
@@ -54,7 +59,6 @@ public class TabletManager : MonoBehaviour
                 break;
 
             case 1:
-
                 messagingAppButton.SetActive(false);
                 socialMediaAppButton.SetActive(true);
                 textEditingAppButton.SetActive(false);
@@ -64,7 +68,6 @@ public class TabletManager : MonoBehaviour
                 break;
 
             case 2:
-
                 messagingAppButton.SetActive(true);
                 socialMediaAppButton.SetActive(true);
                 textEditingAppButton.SetActive(false);
@@ -74,7 +77,6 @@ public class TabletManager : MonoBehaviour
                 break;
 
             case 3:
-
                 messagingAppButton.SetActive(true);
                 socialMediaAppButton.SetActive(true);
                 textEditingAppButton.SetActive(true);
@@ -84,7 +86,6 @@ public class TabletManager : MonoBehaviour
                 break;
 
             case 4:
-
                 messagingAppButton.SetActive(true);
                 socialMediaAppButton.SetActive(true);
                 textEditingAppButton.SetActive(true);
@@ -94,7 +95,6 @@ public class TabletManager : MonoBehaviour
                 break;
 
             case 5:
-
                 messagingAppButton.SetActive(true);
                 socialMediaAppButton.SetActive(true);
                 textEditingAppButton.SetActive(true);
@@ -109,4 +109,51 @@ public class TabletManager : MonoBehaviour
     {
         return availableApps;
     }
+
+    public void ActivateSocialMediaApp()
+    {
+        StartCoroutine(AnimateImageSetGameObjectActiveAfterCooldown(socialMediaApp));
+    }
+
+    public void ActivateTextEditingApp()
+    {
+        StartCoroutine(AnimateImageSetGameObjectActiveAfterCooldown(textEditingApp));
+    }
+    public void ActivateImageEditingApp()
+    {
+        StartCoroutine(AnimateImageSetGameObjectActiveAfterCooldown(imageEditingApp));
+    }
+
+    private IEnumerator AnimateImageSetGameObjectActiveAfterCooldown(GameObject gameObjectToBeActivated)
+    {
+        StartCoroutine(ActivateAnimateThenDeactivateAnimationImage());
+        float appOpeningCooldown = 1f;
+        yield return new WaitForSeconds(appOpeningCooldown);
+        gameObjectToBeActivated.SetActive(true);
+    }
+
+    // ---------------------------------------------------------------------------------------------------------
+
+    [SerializeField] private AnimationImage animationImage;
+
+    private IEnumerator ActivateAnimateThenDeactivateAnimationImage()
+    {
+        float initialCoolDownAfterClick = 0.2f;
+        yield return new WaitForSeconds(initialCoolDownAfterClick);
+        ActivateAnimationImage();
+        float deactivatingImageCooldown = 3;
+        yield return new WaitForSeconds(deactivatingImageCooldown);
+        DeactivateAnimationImage();
+    }
+
+    private void ActivateAnimationImage()
+    {
+        animationImage.gameObject.SetActive(true);
+    }
+
+    private void DeactivateAnimationImage()
+    {
+        animationImage.gameObject.SetActive(false);
+    }
+
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class MemeCreation : MonoBehaviour
+public class MemeCreation : App
 {
+
     [SerializeField] private RectTransform scrollRectMaskImages;
     [SerializeField] private RectTransform[] images;
 

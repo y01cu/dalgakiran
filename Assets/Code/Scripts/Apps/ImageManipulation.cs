@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ImageManipulation : MonoBehaviour
+public class ImageManipulation : App
 {
     private static int correctChoiceCounter = 0;
 
