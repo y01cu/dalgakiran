@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SocialMediaAppManager : App
+public class SocialMediaAppManager : MonoBehaviour
 {
     // It starts with -1 because there are some zeroth things.
     private static int appProgress = -1;

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class TextEditingApp : App
+public class TextEditingApp : MonoBehaviour
 {
     public static TextEditingApp Instance;
 

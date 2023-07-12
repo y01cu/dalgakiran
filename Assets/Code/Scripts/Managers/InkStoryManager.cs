@@ -22,7 +22,7 @@ public class InkStoryManager : MonoBehaviour
     // [Range(0, 1)]
     // [SerializeField]
     private float textWritingSpeed;
-    
+
     // This is a super bare bones example of how to play and display a ink story in Unity.
     public static event Action<Story> OnCreateStory;
 
