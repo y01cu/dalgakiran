@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Art/Videos.meta
 guid: aadda30b2abff584a9e492faf85c192b
 folderAsset: yes
 DefaultImporter:
+========
+guid: 4c87fc6c294ef554396d452ef19542af
+NativeFormatImporter:
+>>>>>>>> parent of 3efbe14 (Commit before smart inspector):Assets/Art/Animations/LampLoopAnimation.anim.meta
   externalObjects: {}
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

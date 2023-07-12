@@ -40,10 +40,17 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 974
     y: 0
     width: 326
     height: 939
+=======
+    x: 845.6
+    y: 0
+    width: 212.80005
+    height: 721
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     x: 845.6
     y: 0
@@ -73,10 +80,17 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1300
     y: 0
     width: 226
     height: 939
+=======
+    x: 1058.4
+    y: 0
+    width: 160.79993
+    height: 721
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     x: 1058.4
     y: 0
@@ -188,7 +202,11 @@ MonoBehaviour:
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 66
+=======
+  controlID: 577
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
   controlID: 577
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
@@ -212,8 +230,13 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 974
     height: 939
+=======
+    width: 845.6
+    height: 721
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     width: 845.6
     height: 721
@@ -240,8 +263,13 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 974
     height: 599
+=======
+    width: 845.6
+    height: 512.8
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     width: 845.6
     height: 512.8
@@ -271,9 +299,15 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 599
     width: 974
     height: 340
+=======
+    y: 512.8
+    width: 845.6
+    height: 208.20001
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     y: 512.8
     width: 845.6
@@ -307,10 +341,17 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1526
     y: 0
     width: 394
     height: 939
+=======
+    x: 1219.2
+    y: 0
+    width: 259.80005
+    height: 721
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     x: 1219.2
     y: 0
@@ -1545,15 +1586,21 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: -620
     y: 73
     width: 224
     height: 918
 =======
+=======
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
     x: -609
     y: 112
     width: 158.79993
     height: 700
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1594,7 +1641,11 @@ MonoBehaviour:
     m_SelectedIDs: d67c0000
     m_LastClickedID: 31958
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000ea170100ec170100ee170100f0170100f2170100f4170100f6170100f8170100
+=======
+    m_ExpandedIDs: ffffffff00000000ce170100d0170100d2170100d4170100d6170100d8170100da170100dc170100de170100e2170100e4170100e6170100e8170100ea170100ec170100ee170100f0170100f2170100f4170100f6170100f8170100fa170100
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     m_ExpandedIDs: ffffffff00000000ce170100d0170100d2170100d4170100d6170100d8170100da170100dc170100de170100e2170100e4170100e6170100e8170100ea170100ec170100ee170100f0170100f2170100f4170100f6170100f8170100fa170100
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
@@ -1626,7 +1677,11 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: ffffffff00000000ea170100ec170100ee170100f0170100f2170100f4170100f61701006618010068180100
+=======
+    m_ExpandedIDs: ffffffff00000000ce170100d0170100d2170100d4170100d6170100d8170100da170100dc170100de170100e2170100e4170100e6170100e8170100ea170100ec170100ee170100f0170100f2170100f4170100f6170100f8170100fa170100
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     m_ExpandedIDs: ffffffff00000000ce170100d0170100d2170100d4170100d6170100d8170100da170100dc170100de170100e2170100e4170100e6170100e8170100ea170100ec170100ee170100f0170100f2170100f4170100f6170100f8170100fa170100
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
@@ -1707,15 +1762,21 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: -946
     y: 73
     width: 324
     height: 918
 =======
+=======
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
     x: -875
     y: 112
     width: 210.80005
     height: 700
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1733,7 +1794,11 @@ MonoBehaviour:
       m_SelectedIDs: 
       m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ExpandedIDs: 720dffffc496ffff1899ffff54b0ffff66b0ffff6cb0fffff0d6ffff24fbfffff07c0000189600000aa1000010aa0000d2ac00007eb000005cb8000050c50000
+=======
+      m_ExpandedIDs: 8884ffff0285ffffb29affffda9effff94abffffaaadffffc0bcffffd0cbffffb6daffff6ae9ffff98edffffcaeeffffb6f9fffff4faffff30fbffffd66f000056910000689100008c910000fc920000209300005e930000829300005a230100aa230100b2230100
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
       m_ExpandedIDs: 8884ffff0285ffffb29affffda9effff94abffffaaadffffc0bcffffd0cbffffb6daffff6ae9ffff98edffffcaeeffffb6f9fffff4faffff30fbffffd66f000056910000689100008c910000fc920000209300005e930000829300005a230100aa230100b2230100
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
@@ -1782,15 +1847,21 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: -1920
     y: 73
     width: 973
     height: 578
 =======
+=======
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
     x: -1932
     y: 112
     width: 844.6
     height: 491.8
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -2151,9 +2222,15 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 105.49627, y: 142.18944, z: -47.897003}
     speed: 2
     m_Value: {x: 105.49627, y: 142.18944, z: -47.897003}
+=======
+    m_Target: {x: 65.586914, y: 29.447117, z: -34.396557}
+    speed: 2
+    m_Value: {x: -0.06342132, y: 1.0230529, z: 0.16919608}
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
     m_Target: {x: 65.586914, y: 29.447117, z: -34.396557}
     speed: 2
@@ -2205,6 +2282,7 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 0.10795833, y: -0.87001675, z: 0.22365862, w: 0.4301761}
     speed: 2
     m_Value: {x: 0.10548626, y: -0.87102115, z: 0.22111753, w: 0.42579553}
@@ -2219,6 +2297,15 @@ MonoBehaviour:
 <<<<<<< HEAD
     m_Value: 0.86602604
 =======
+    m_Value: 0.8660254
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
+    m_Target: {x: -0.0004905164, y: 0.9478823, z: -0.01887777, w: -0.32292375}
+    speed: 2
+    m_Value: {x: 0.108112164, y: 0.6697187, z: -0.105276756, w: 0.72905594}
+  m_Size:
+    m_Target: 9.55
+    speed: 2
     m_Value: 0.8660254
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
   m_Ortho:
@@ -2267,15 +2354,21 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: -1920
     y: 73
     width: 973
     height: 578
 =======
+=======
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
     x: 0
     y: 73.6
     width: 895
     height: 527.8
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -2330,15 +2423,21 @@ MonoBehaviour:
       x: 0
       y: 21
 <<<<<<< HEAD
+<<<<<<< HEAD
       width: 973
       height: 557
     m_Scale: {x: 0.50677085, y: 0.50677085}
     m_Translation: {x: 486.5, y: 278.5}
 =======
+=======
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
       width: 895
       height: 506.8
     m_Scale: {x: 0.5826823, y: 0.5826823}
     m_Translation: {x: 447.5, y: 253.4}
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -2347,6 +2446,7 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
       x: -960
       y: -549.55804
       width: 1920
@@ -2354,6 +2454,15 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 0.50677085
   m_LastWindowPixelSize: {x: 973, y: 578}
+=======
+      x: -768
+      y: -434.88535
+      width: 1536
+      height: 869.7707
+    m_MinimalGUI: 1
+  m_defaultScale: 0.5826823
+  m_LastWindowPixelSize: {x: 1118.75, y: 659.75}
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
 =======
       x: -768
       y: -434.88535
@@ -2463,15 +2572,21 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: -1920
     y: 672
     width: 973
     height: 319
 =======
+=======
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
     x: -1932
     y: 753
     width: 844.6
     height: 187.20001
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -2543,15 +2658,21 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: -394
     y: 73
     width: 393
     height: 918
 =======
+=======
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
     x: -408
     y: 112
     width: 257.80005
     height: 700
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
   m_SerializedDataModeController:
     m_DataMode: 0

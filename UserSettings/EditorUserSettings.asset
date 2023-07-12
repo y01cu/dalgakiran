@@ -7,6 +7,7 @@ EditorUserSettings:
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 00010257060c5d58555f592344270d44414e1e2e2f797e63752a4f64b1e2646d
       flags: 0
     RecentlyUsedSceneGuid-1:
@@ -15,6 +16,11 @@ EditorUserSettings:
       value: 0602045e04515e0b0f0c5c7540275b4447164829757f236529714867bab1636b
       flags: 0
     RecentlyUsedSceneGuid-1:
+=======
+      value: 0602045e04515e0b0f0c5c7540275b4447164829757f236529714867bab1636b
+      flags: 0
+    RecentlyUsedSceneGuid-1:
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
       value: 5603055355045f585f5e0a7a48265e444f4f41727929256328791c31b6e66d3c
       flags: 0
     RecentlyUsedSceneGuid-2:
@@ -40,6 +46,15 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedSceneGuid-9:
       value: 5004065f5c545f5a5457087414255a4414154f7a757d74672f284466e3e13668
+<<<<<<< HEAD
+>>>>>>> parent of 3efbe14 (Commit before smart inspector)
+=======
+      flags: 0
+    UnityRemoteCompression:
+      value: 29617121
+      flags: 0
+    UnityRemoteResolution:
+      value: 275e4308165c135e
 >>>>>>> parent of 3efbe14 (Commit before smart inspector)
       flags: 0
     vcSharedLogLevel:

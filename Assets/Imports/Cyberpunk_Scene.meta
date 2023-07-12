@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Imports/Cyberpunk_Scene.meta
 guid: 68d8d10b558426d46a395f8c4e134303
 folderAsset: yes
+========
+guid: 2bd15620f6443de419ebb809883bfcdf
+>>>>>>>> parent of 3efbe14 (Commit before smart inspector):Assets/Level/Scenes/ButtonAnimationTestScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Imports/LA_Night_City.meta
 guid: 30fad9d84fd29bc47aec344d0ef3948e
 folderAsset: yes
 DefaultImporter:
+========
+guid: bd634d50bafac73478f74196c5083013
+NativeFormatImporter:
+>>>>>>>> parent of 3efbe14 (Commit before smart inspector):Assets/Art/Animations/ImageInitial.anim.meta
   externalObjects: {}
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
