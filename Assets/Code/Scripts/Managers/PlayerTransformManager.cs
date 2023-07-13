@@ -13,13 +13,11 @@ public class PlayerTransformManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.FlowTheGameAction += SetPlayerPositionBasedOnTurnAndKind;
+        GameManager.FlowTheGame += SetPlayerPositionBasedOnTurnAndKind;
     }
-
-    private void SetPlayerPositionBasedOnTurnAndKind()
+    
+    void SetPlayerPositionBasedOnTurnAndKind()
     {
-        NPCTurnManager.IncreaseNPCNumberByOneAction();
-
         bool isPlayerGood = GameManager.ReturnPlayerRole();
         if (isPlayerGood)
         {

@@ -52,8 +52,8 @@ EXTERNAL IncrementTextEditingApp()
 -Bu işte doğuştan yeteneklisin. İnsanlar senin gönderini farketmeye başladılar bile.
     *[Meşhur oldum.]
     ~IncrementSocialMediaApp()
-    ~MakeCanvasDissappear()
     --Aynen öyle! Sosyal medyaya gir de bir bak!
+    ~MakeCanvasDissappear()
     //insert function here
     
     // social media app needs to be opened here with

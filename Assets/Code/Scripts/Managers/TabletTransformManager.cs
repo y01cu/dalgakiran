@@ -15,7 +15,7 @@ public class TabletTransformManager : MonoBehaviour
     {
         // Calling flow the game action happens in PlayerTransformManager class. Then there's no need to call it here.
 
-        GameManager.FlowTheGameAction += SetTabletPositionBasedOnTurnAndKind;
+        GameManager.FlowTheGame += SetTabletPositionBasedOnTurnAndKind;
     }
 
     private void SetTabletPositionBasedOnTurnAndKind()
@@ -25,9 +25,7 @@ public class TabletTransformManager : MonoBehaviour
 
     private IEnumerator SetTabletPositionBasedOnTurnAndKindCoroutine()
     {
-        Debug.Log("npc turn before: " + NPCTurnManager.GetNPCNumber());
         yield return new WaitForSeconds(1f);
-        Debug.Log("npc turn after: " + NPCTurnManager.GetNPCNumber());
         // No need to call it here also.
         // NPCTurnManager.IncreaseNPCNumberByOneAction();
 

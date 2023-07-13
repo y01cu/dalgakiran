@@ -3,56 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasManager : MonoBehaviour
-{
+public class CanvasManager : MonoBehaviour {
     public static CanvasManager Instance;
 
     [SerializeField] private List<Canvas> badInkStoryCanvases;
     [SerializeField] private List<Canvas> goodInkStoryCanvases;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
+    private void Awake() {
+        if (Instance == null) {
             Instance = this;
-        }
-        else
-        {
+        } else {
             Destroy(this);
         }
     }
 
-    private void Start()
-    {
-        foreach (Canvas badCanvas in badInkStoryCanvases)
-        {
+    private void Start() {
+        foreach (Canvas badCanvas in badInkStoryCanvases) {
             badCanvas.gameObject.SetActive(false);
         }
-        foreach (Canvas goodCanvas in goodInkStoryCanvases)
-        {
+        foreach (Canvas goodCanvas in goodInkStoryCanvases) {
             goodCanvas.gameObject.SetActive(false);
         }
 
-        GameManager.FlowTheGameAction += ActivateCanvasBasedOnTurnAndKind;
+        GameManager.FlowTheGame += () => {
+            StartCoroutine(ActivateCanvasBasedOnTurnAndKind());
+        };
     }
 
-    private void ActivateCanvasBasedOnTurnAndKind()
-    {
-        StartCoroutine(ActivateCanvasBasedOnTurnAndKindCoroutine());
-    }
-
-    private IEnumerator ActivateCanvasBasedOnTurnAndKindCoroutine()
-    {
-        yield return new WaitForSeconds(3f);
-
+    private IEnumerator ActivateCanvasBasedOnTurnAndKind() {
+        float initialActivationCooldown = 3f;
+        yield return new WaitForSeconds(initialActivationCooldown);
+        //yield return new WaitForSeconds(3f);
         bool isPlayerGood = GameManager.ReturnPlayerRole();
-
-        if (isPlayerGood)
-        {
+        if (isPlayerGood) {
             goodInkStoryCanvases[NPCTurnManager.GetNPCNumber()].gameObject.SetActive(true);
-        }
-        else
-        {
+        } else {
             badInkStoryCanvases[NPCTurnManager.GetNPCNumber()].gameObject.SetActive(true);
         }
     }
@@ -61,9 +46,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private Button buttonPlace1;
     [SerializeField] private Button buttonPlace2;
 
-
-    public void OpenTeleportPanel()
-    {
+    public void OpenTeleportPanel() {
         teleportPanel.gameObject.SetActive(true);
 
         buttonPlace1.GetComponent<Animator>().SetTrigger("ScaleInAndOut");

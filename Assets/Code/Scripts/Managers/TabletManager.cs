@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TabletManager : MonoBehaviour
-{
+public class TabletManager : MonoBehaviour {
     private static int availableApps = 0;
     [Header("App buttons")]
     [SerializeField] private GameObject messagingAppButton;
@@ -24,8 +23,7 @@ public class TabletManager : MonoBehaviour
     [SerializeField] private GameObject textEditingApp;
     [SerializeField] private GameObject socialMediaApp;
 
-    private void Start()
-    {
+    void Awake() {
         // Initially deactivate app buttons in the tablet
 
         messagingAppButton.SetActive(false);
@@ -35,20 +33,14 @@ public class TabletManager : MonoBehaviour
         videoManipulationAppButton.SetActive(false);
 
         // Subscribing to the action
-        IncrementAvailableAppsAction += IncrementAvailableApps;
-        IncrementAvailableAppsAction += UpdateAvailableApps;
+        IncrementAvailableAppsAction += () => {
+            availableApps++;
+            UpdateAvailableApps();
+        };
     }
 
-    private static void IncrementAvailableApps()
-    {
-        // Activates next app
-        availableApps++;
-    }
-
-    private void UpdateAvailableApps()
-    {
-        switch (availableApps)
-        {
+    private void UpdateAvailableApps() {
+        switch (availableApps) {
             case 0:
                 messagingAppButton.SetActive(false);
                 socialMediaAppButton.SetActive(false);
@@ -105,27 +97,26 @@ public class TabletManager : MonoBehaviour
         }
     }
 
-    public static int GetAvailableApps()
-    {
+    public static int GetAvailableApps() {
         return availableApps;
     }
 
-    public void ActivateSocialMediaApp()
-    {
+    public void ActivateSocialMediaApp() {
         StartCoroutine(AnimateImageSetGameObjectActiveAfterCooldown(socialMediaApp));
     }
 
-    public void ActivateTextEditingApp()
-    {
+    public void ActivateMessagingApp() {
+        StartCoroutine(AnimateImageSetGameObjectActiveAfterCooldown(messagingApp));
+    }
+
+    public void ActivateTextEditingApp() {
         StartCoroutine(AnimateImageSetGameObjectActiveAfterCooldown(textEditingApp));
     }
-    public void ActivateImageEditingApp()
-    {
+    public void ActivateImageEditingApp() {
         StartCoroutine(AnimateImageSetGameObjectActiveAfterCooldown(imageEditingApp));
     }
 
-    private IEnumerator AnimateImageSetGameObjectActiveAfterCooldown(GameObject gameObjectToBeActivated)
-    {
+    private IEnumerator AnimateImageSetGameObjectActiveAfterCooldown(GameObject gameObjectToBeActivated) {
         StartCoroutine(ActivateAnimateThenDeactivateAnimationImage());
         float appOpeningCooldown = 1f;
         yield return new WaitForSeconds(appOpeningCooldown);
@@ -136,8 +127,7 @@ public class TabletManager : MonoBehaviour
 
     [SerializeField] private AnimationImage animationImage;
 
-    private IEnumerator ActivateAnimateThenDeactivateAnimationImage()
-    {
+    private IEnumerator ActivateAnimateThenDeactivateAnimationImage() {
         float initialCoolDownAfterClick = 0.2f;
         yield return new WaitForSeconds(initialCoolDownAfterClick);
         ActivateAnimationImage();
@@ -146,13 +136,11 @@ public class TabletManager : MonoBehaviour
         DeactivateAnimationImage();
     }
 
-    private void ActivateAnimationImage()
-    {
+    private void ActivateAnimationImage() {
         animationImage.gameObject.SetActive(true);
     }
 
-    private void DeactivateAnimationImage()
-    {
+    private void DeactivateAnimationImage() {
         animationImage.gameObject.SetActive(false);
     }
 

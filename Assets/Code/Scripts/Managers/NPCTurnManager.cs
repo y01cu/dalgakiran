@@ -19,6 +19,8 @@ public class NPCTurnManager : MonoBehaviour
     {
         IncreaseNPCNumberByOneAction += IncreaseNPCNumberByOne;
         IncreaseNPCNumberByOneAction += OtherThingsHappening;
+
+        GameManager.FlowTheGame += IncreaseNPCNumberByOne;
     }
 
     public void IncreaseNPCNumberByOne()

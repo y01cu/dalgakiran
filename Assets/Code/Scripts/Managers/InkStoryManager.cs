@@ -7,8 +7,7 @@ using TMPro;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class InkStoryManager : MonoBehaviour
-{
+public class InkStoryManager : MonoBehaviour {
     // AC refers to AudioClip
 
     // [SerializeField] private AudioClip tempAC;
@@ -22,79 +21,55 @@ public class InkStoryManager : MonoBehaviour
     // [Range(0, 1)]
     // [SerializeField]
     private float textWritingSpeed;
-    
+
     // This is a super bare bones example of how to play and display a ink story in Unity.
     public static event Action<Story> OnCreateStory;
 
-    private void Awake()
-    {
+    private void Awake() {
         textWritingSpeed = 0.02f;
         // Remove the default message
         RemoveChildren();
         // StartStory();
     }
 
-    private void Start()
-    {
-        OpenCanvasAgainAction += CallOpenCanvasAgainAndContinueCoroutine;
+    private void Start() {
+        OpenCanvasAgainAction += CallOpenCanvasAgainAndContinue;
     }
 
     // Creates a new Story object with the compiled story which we can then play!
-    public void StartStory()
-    {
+    public void StartStory() {
         story = new Story(inkJSONAsset.text);
         InkBindExternalFunctions();
-
         if (OnCreateStory != null) OnCreateStory(story);
-
         RefreshView();
     }
 
-    private void InkBindExternalFunctions()
-    {
-        story.BindExternalFunction("PlayHuhSound", () =>
-        {
-            StartCoroutine(WaitHuhSound());
+    private void InkBindExternalFunctions() {
+        story.BindExternalFunction("FlowTheGame", () => {
+            GameManager.FlowTheGame();
         });
-
-        story.BindExternalFunction("ActivateNextApp", () =>
-        {
+        story.BindExternalFunction("PlayHuhSound", () => {
+            StartCoroutine(PlayHuhSoundAfterSomeTime());
+        });
+        story.BindExternalFunction("ActivateNextApp", () => {
             // Activate next app and close canvas
             TabletManager.IncrementAvailableAppsAction();
         });
-
-        story.BindExternalFunction("MakeCanvasDissappear", () =>
-        {
-            // Activate next app and close canvas
-            // TabletManager.IncrementAvailableAppsAction();
-
-            // Close the text writing process
+        story.BindExternalFunction("MakeCanvasDissappear", () => {
             SetAlpha(GetComponent<Image>(), 0f);
             DeactivateChildren();
-
-            // Close the canvas
-            // GetComponentInParent<Canvas>().gameObject.SetActive(false);
         });
-
-        story.BindExternalFunction("FlowTheGame", () =>
-        {
-            GameManager.Instance.FlowTheGame();
-        });
-
-        story.BindExternalFunction("DestroyCanvas", () =>
-        {
+        story.BindExternalFunction("DestroyCanvas", () => {
             // Destroy your own parent
             Destroy(gameObject.transform.parent.gameObject);
         });
-        story.BindExternalFunction("IncrementTextEditingApp", () =>
-        {
+        story.BindExternalFunction("IncrementTextEditingApp", () => {
             // Fill the messages
             // SocialMediaAppManager.Instance.FillMessages();
             TextEditingApp.IncrementAppProgress();
             TextEditingApp.Instance.TextEditingAppFillContent();
         });
-        story.BindExternalFunction("IncrementSocialMediaApp", () =>
-        {
+        story.BindExternalFunction("IncrementSocialMediaApp", () => {
             // Fill the messages
             // SocialMediaAppManager.Instance.FillMessages();
             SocialMediaAppManager.IncrementAppProgress();
@@ -102,35 +77,28 @@ public class InkStoryManager : MonoBehaviour
         });
     }
 
-    private void MakeCanvasInvisible()
-    {
+    private void MakeCanvasInvisible() {
         SetAlpha(GetComponent<Image>(), 0f);
     }
 
-    private void CallOpenCanvasAgainAndContinueCoroutine()
-    {
+    private void CallOpenCanvasAgainAndContinue() {
         float canvasOpeningCooldown = 3f;
         StartCoroutine(OpenCanvasAgainAndContinueCoroutine(canvasOpeningCooldown));
     }
 
-    private void DeactivateChildren()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
+    private void DeactivateChildren() {
+        for (int i = 0; i < transform.childCount; i++) {
             transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 
-    private void ActivateChildren()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
+    private void ActivateChildren() {
+        for (int i = 0; i < transform.childCount; i++) {
             transform.GetChild(i).gameObject.SetActive(true);
         }
     }
 
-    private void SetAlpha(Image img, float alphaValue)
-    {
+    private void SetAlpha(Image img, float alphaValue) {
         Color originalColor = img.color;
         img.color = new Color(originalColor.r, originalColor.g, originalColor.b, alphaValue);
     }
@@ -139,38 +107,34 @@ public class InkStoryManager : MonoBehaviour
 
     public static Action OpenCanvasAgainAction;
 
-    private IEnumerator OpenCanvasAgainAndContinueCoroutine(float time)
-    {
+    private IEnumerator OpenCanvasAgainAndContinueCoroutine(float time) {
         yield return new WaitForSeconds(time);
         SetAlpha(GetComponent<Image>(), 0.9f);
         ActivateChildren();
         // Let's try it without refreshing the view
     }
 
-    private IEnumerator WaitHuhSound()
-    {
-        yield return new WaitForSeconds(0.1f);
+    private IEnumerator PlayHuhSoundAfterSomeTime() {
+        float cooldown = 0.2f;
+        yield return new WaitForSeconds(cooldown);
         audioSource.PlayOneShot(huhSound);
     }
 
     // This is the main function called every time the story changes. It does a few things:
     // Destroys all the old content and choices.
     // Continues over all the lines of text, then displays all the choices. If there are no choices, the story is finished!
-    private void RefreshView()
-    {
+    private void RefreshView() {
         StartCoroutine(RefreshViewCoroutine());
     }
 
-    private IEnumerator RefreshViewCoroutine()
-    {
+    private IEnumerator RefreshViewCoroutine() {
         float cooldown = 0.4f;
         yield return new WaitForSeconds(cooldown);
         // Remove all the UI on screen
         RemoveChildren();
 
         // Read all the content until we can't continue any more
-        while (story.canContinue)
-        {
+        while (story.canContinue) {
 
             // Continue gets the next line of the story
             string text = story.Continue();
@@ -181,38 +145,31 @@ public class InkStoryManager : MonoBehaviour
         }
     }
 
-    private void StopSoundEffectAndDisplayChoices()
-    {
+    private void StopSoundEffectAndDisplayChoices() {
         StopSoundEffect_TextWriting();
         // Display all the choices, if there are any!
-        if (story.currentChoices.Count > 0)
-        {
-            for (int i = 0; i < story.currentChoices.Count; i++)
-            {
+        if (story.currentChoices.Count > 0) {
+            for (int i = 0; i < story.currentChoices.Count; i++) {
                 Choice choice = story.currentChoices[i];
                 Button button = CreateChoiceView(choice.text.Trim());
                 // Tell the button what to do when we press it
-                button.onClick.AddListener(delegate
-                {
+                button.onClick.AddListener(delegate {
                     // audioSource.PlayOneShot(buttonClickAudioClip);
                     OnClickChoiceButton(choice);
                 });
             }
         }
         // If we've read all the content and there's no choices, the story is finished!
-        else
-        {
+        else {
             Button choice = CreateChoiceView("End of story.\nRestart?");
-            choice.onClick.AddListener(delegate
-            {
+            choice.onClick.AddListener(delegate {
                 StartStory();
             });
         }
     }
 
     // When we click the choice button, tell the story to choose that choice!
-    private void OnClickChoiceButton(Choice choice)
-    {
+    private void OnClickChoiceButton(Choice choice) {
         story.ChooseChoiceIndex(choice.index);
 
         StartCoroutine(RefreshViewCoroutine());
@@ -220,19 +177,15 @@ public class InkStoryManager : MonoBehaviour
     }
 
     // Creates a textbox showing the the line of text
-    private void CreateContentView(string text)
-    {
+    private void CreateContentView(string text) {
         TextMeshProUGUI storyText = Instantiate(textPrefab) as TextMeshProUGUI;
 
         // storyText.text = text;
 
-        if (textWriterSingle != null && textWriterSingle.IsActive())
-        {
+        if (textWriterSingle != null && textWriterSingle.IsActive()) {
             // Currently active TextWriter
             textWriterSingle.WriteAllAndDestroy();
-        }
-        else
-        {
+        } else {
             PlaySoundEffect_TextWriting();
             textWriterSingle = TextWriter.AddWriterWithSpeed_Static(storyText, text, textWritingSpeed, true, true, StopSoundEffectAndDisplayChoices);
 
@@ -246,25 +199,21 @@ public class InkStoryManager : MonoBehaviour
         storyText.transform.SetParent(textField.transform, false);
     }
 
-    private IEnumerator CreateContentViewElseBlockCoroutine(TextMeshProUGUI storyText, string text)
-    {
+    private IEnumerator CreateContentViewElseBlockCoroutine(TextMeshProUGUI storyText, string text) {
         // Not used
         yield return new WaitForSeconds(0.2f);
     }
 
-    private void PlaySoundEffect_TextWriting()
-    {
+    private void PlaySoundEffect_TextWriting() {
         audioSource.Play();
     }
 
-    private void StopSoundEffect_TextWriting()
-    {
+    private void StopSoundEffect_TextWriting() {
         audioSource.Stop();
     }
 
     // Creates a button showing the choice text
-    private Button CreateChoiceView(string text)
-    {
+    private Button CreateChoiceView(string text) {
         // Creates the button from a prefab
         Button choice = Instantiate(buttonPrefab) as Button;
 
@@ -284,22 +233,16 @@ public class InkStoryManager : MonoBehaviour
     }
 
     // Destroys all the children of this gameobject (all the UI)
-    private void RemoveChildren()
-    {
+    private void RemoveChildren() {
         int childCount = textBackgroundImage.transform.childCount;
-        for (int i = childCount - 1; i >= 0; --i)
-        {
+        for (int i = childCount - 1; i >= 0; --i) {
             bool isField = textBackgroundImage.transform.GetChild(i).name == "TextField" || textBackgroundImage.transform.GetChild(i).name == "ButtonsField";
-            if (isField)
-            {
+            if (isField) {
                 int fieldChildCount = textBackgroundImage.transform.GetChild(i).childCount;
-                for (int j = fieldChildCount - 1; j >= 0; --j)
-                {
+                for (int j = fieldChildCount - 1; j >= 0; --j) {
                     GameObject.Destroy(textBackgroundImage.transform.GetChild(i).GetChild(j).gameObject);
                 }
-            }
-            else
-            {
+            } else {
                 GameObject.Destroy(textBackgroundImage.transform.GetChild(i).gameObject);
             }
         }
