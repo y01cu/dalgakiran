@@ -13,7 +13,7 @@ public class TabletManager : MonoBehaviour {
     [SerializeField] private GameObject socialMediaAppButton;
 
     // If required I can add an action for here
-    public static Action IncrementAvailableAppsAction;
+    public static Action IncrementAvailableApps;
     // Using action makes some function impossible to be called without another and it includes both name as well I guess.
 
     [Header("Apps")]
@@ -33,7 +33,7 @@ public class TabletManager : MonoBehaviour {
         videoManipulationAppButton.SetActive(false);
 
         // Subscribing to the action
-        IncrementAvailableAppsAction += () => {
+        IncrementAvailableApps += () => {
             availableApps++;
             UpdateAvailableApps();
         };

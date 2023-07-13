@@ -45,17 +45,4 @@ public class TabletTransformManager : MonoBehaviour
             Debug.Log("Tablet position is not changed.");
         }
     }
-
-    private void Update()
-    {
-        ChangePosition();
-    }
-
-    private void ChangePosition()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            SetTabletPositionBasedOnTurnAndKind();
-        }
-    }
 }

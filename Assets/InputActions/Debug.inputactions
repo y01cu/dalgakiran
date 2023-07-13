@@ -1,0 +1,54 @@
+{
+    "name": "Debug",
+    "maps": [
+        {
+            "name": "Debug",
+            "id": "32255353-d0da-4aab-8243-226a3e3c6410",
+            "actions": [
+                {
+                    "name": "Toggle",
+                    "type": "Button",
+                    "id": "ab2dcd87-8c0f-4143-91d7-f230216df7e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Return",
+                    "type": "Button",
+                    "id": "6b85a2dd-33b9-4088-bfbc-feb24603ed98",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c5629dfd-d36c-41ba-b2f8-0d0f1c2b7057",
+                    "path": "<Keyboard>/#(\")",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2188300d-dda2-4ec9-94a6-5e65dcd6d6f1",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

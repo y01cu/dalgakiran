@@ -11,12 +11,18 @@ scopes = {
 	"last_search.DA949528" = "node"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
-	"last_search.310DEAF1" = "t:scene DalgaKıra"
+	"last_search.310DEAF1" = "shor"
 	"OpenInspectorPreview.310DEAF1" = "0"
 	"currentGroup.310DEAF1" = "all"
 	"last_search.3BE40471" = "t:AudioSource"
 	"OpenInspectorPreview.3BE40471" = "0"
 	"currentGroup.3BE40471" = "all"
+	"last_search.E8DA15E5" = ""
+	"OpenInspectorPreview.E8DA15E5" = "0"
+	"currentGroup.E8DA15E5" = "all"
+	"last_search.110DEAF1" = ""
+	"OpenInspectorPreview.110DEAF1" = "0"
+	"currentGroup.110DEAF1" = "asset"
 }
 providers = {
 	adb = {
@@ -68,8 +74,12 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"t:scene DalgaKıra"
+	"s"
 	""
+	"i"
+	"Pkl"
+	"h: t:Animator"
+	"t:scene DalgaKıra"
 	"t:scene DalgaKıran"
 	"t:scene "
 	"t:scene"
@@ -77,7 +87,6 @@ recentSearches = [
 	"t:Canvas"
 	"missing:Script"
 	"h: t:"
-	"h: t:Animator"
 	"t:CanvasScaler"
 	"t:CanvasGroup"
 	"C"
@@ -85,13 +94,11 @@ recentSearches = [
 	"t:AudioSource"
 	"basic dem"
 	".anim"
-	"prefab:any Cyberpunk_Scene"
-	"prefab:any"
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
-showSavedSearchPanel = true
+showSavedSearchPanel = false
 hideTabs = false
 expandedQueries = [-1765347274 961552606]
 queryBuilder = false

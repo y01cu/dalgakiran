@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
             FlowTheGame?.Invoke();
         }
         if (Input.GetKeyDown(KeyCode.L)) {
-            TabletManager.IncrementAvailableAppsAction();
+            TabletManager.IncrementAvailableApps();
         }
     }
 

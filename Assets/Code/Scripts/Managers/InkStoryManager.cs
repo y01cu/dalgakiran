@@ -53,7 +53,7 @@ public class InkStoryManager : MonoBehaviour {
         });
         story.BindExternalFunction("ActivateNextApp", () => {
             // Activate next app and close canvas
-            TabletManager.IncrementAvailableAppsAction();
+            TabletManager.IncrementAvailableApps();
         });
         story.BindExternalFunction("MakeCanvasDissappear", () => {
             SetAlpha(GetComponent<Image>(), 0f);
